@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Domain\Interfaces\" />
     <Folder Include="Models\ViewComponents\" />
   </ItemGroup>
 
