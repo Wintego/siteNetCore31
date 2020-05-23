@@ -65,7 +65,7 @@ namespace siteNetCore31.Domain
             //добавляем страницу Главная
             builder.Entity<Entities.Page>().HasData(new Entities.Page
             {
-                Id = new Guid("E50E02EC-486C-4CE0-8036-3489A166766"),
+                Id = new Guid("A241DD18-E497-40BE-8504-4DEAACA2C6CF"),
                 Url = "index",
                 H1 = "Главная"
             });
