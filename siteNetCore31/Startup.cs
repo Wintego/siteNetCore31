@@ -5,9 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using siteNetCore31.Domain;
+using siteNetCore31.Domain.Repsitories;
+using siteNetCore31.Domain.Repsitories.Abstract;
+using siteNetCore31.Domain.Repsitories.EntityFramework;
 using siteNetCore31.Service;
 
 namespace siteNetCore31
@@ -24,6 +30,32 @@ namespace siteNetCore31
         {
             //подключаем когфиг из appsettings.json
             Configuration.Bind("Project", new Config());
+
+            //подключаем функционал приложения в качестве сервисов
+            services.AddTransient<iPagesRepository, EFPagesRepository>();
+            services.AddTransient<iServicesRepository, EFServicesRepository>();
+            services.AddTransient<DataManager>();
+            
+            //подключаем контекст базы данных
+            services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionStringLocal));
+
+            //настраиваем систему identity
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 8;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+            //
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "authCookie";
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/account/login";
+                options.AccessDeniedPath = "/account/accessdenied";
+                options.SlidingExpiration = true;
+            });
+
             //регистрируем сервис поддержки контроллеров и представлений (MVC)
             services.AddControllersWithViews()
                 //устанавливаем совместимость с apn.net core 3.0
@@ -39,8 +71,14 @@ namespace siteNetCore31
 
             //используем маршрутизацию
             app.UseRouting();
+
             //используем статические файлы
             app.UseStaticFiles();
+
+            //подключаем аунтефикацию и авторизацию
+            app.UseCookiePolicy();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             //задаем маршруты (ендпоинты)
             app.UseEndpoints(endpoints =>
