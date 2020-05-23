@@ -107,6 +107,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   text-decoration: none;
   outline: 0; }
 
+h1 {
+  font-size: 2em;
+  margin: 0 0 1.5em 0;
+  line-height: 1em; }
+
 h2 {
   font-size: 2em;
   margin: 0 0 1.5em 0;
@@ -722,7 +727,7 @@ header.major {
     display: block;
     border-top: solid 1px #dbdbdb;
     height: 8px; }
-  header.major h2, header.major h3 {
+  header.major h1, header.major h2, header.major h3 {
     margin: 0 0 1.2em 0; }
   header.major p {
     margin: 0 0 1.5em 0;
@@ -990,7 +995,7 @@ ol.default {
   text-align: center; }
   .box.feature1 header {
     margin-bottom: 3em; }
-    .box.feature1 header.first h2 {
+    .box.feature1 header.first h1 {
       font-size: 2.5em; }
     .box.feature1 header.first p {
       font-size: 1.2em; }
