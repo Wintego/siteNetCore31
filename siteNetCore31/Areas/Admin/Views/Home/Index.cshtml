@@ -1,0 +1,39 @@
+﻿@model siteNetCore31.Domain.Repsitories.DataManager
+@{
+    var Pages = Model.Pages.GetPages();
+    var Services = Model.Services.GetServices();
+}
+<h1>Панель Администратора</h1>
+
+<h3>Страницы</h3>
+@if (Pages.Any())
+{
+<ul class="style2">
+    @foreach (var item in Pages)
+    {
+        <li>
+            <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-url="@item.Url">@item.H1</a>
+        </li>
+    }
+</ul>
+}
+
+<h3>Услуги</h3>
+@if (Services.Any())
+{
+<ul class="style2">
+    @foreach (var item in Services)
+    {
+        <li>
+            <a asp-area="Admin" asp-controller="Services" asp-action="Index" asp-route-url="@item">@item.H1</a>
+        </li>
+        <li>
+            <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">@item.H1</a>
+        </li>
+    }
+</ul>
+}
+
+<form asp-controller="Account" asp-action="Logout" method="post">
+    <input type="submit" class="button" value="Выйти" />
+</form>

@@ -1,0 +1,29 @@
+﻿@model siteNetCore31.Domain.Entities.Page
+@{
+    ViewBag.Title = $"{Model.H1} - Редактировать";
+}
+<script src="https://cdn.tiny.cloud/1/sfmbb1yfg9gh21ogfv5dwsg4fehxuddmoskblbgbv5haj14r/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>tinymce.init({
+        selector: 'textarea'
+    });
+</script>
+
+<form asp-area="Admin" asp-controller="Pages" asp-action="Edit" method="post">
+    
+    <div>
+        <label asp-for="H1"></label>
+        <input asp-for="H1" />
+        <span asp-validation-for="H1"></span>
+    </div>
+    <div>
+        <label asp-for="Url"></label>
+        <input asp-for="Url" />
+        <span asp-validation-for="Url"></span>
+    </div>
+    <div>
+        <label asp-for="Text"></label>
+        <textarea asp-for="Text"></textarea>
+        <span asp-validation-for="Text"></span>
+    </div>
+    <input style="margin-top: 1em" type="submit" class="button" value="Сохранить" />
+</form>

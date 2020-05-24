@@ -54,12 +54,6 @@ input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
-input, select, textarea {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  appearance: none; }
-
 /* Basic */
 html {
   box-sizing: border-box; }
@@ -741,7 +735,7 @@ form label {
   font-weight: 800;
   letter-spacing: 0.04em;
   color: #404248;
-  margin: 0 0 1em 0;
+  margin: 1em 0 0 0;
   font-size: 0.8em; }
 
 form input[type="text"],
@@ -864,7 +858,7 @@ button,
   border-radius: 8px;
   box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35);
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
-  color: #fff !important;
+  color: #fff;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 800;
