@@ -34,10 +34,28 @@ namespace siteNetCore31.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
+                //получаем все элементы и проверяем есть ли элемент с таким же url
+                IQueryable<Page> pages = dataManager.Pages.GetPages();
+                foreach (var item in pages)
+                {
+                    if (item.Id != page.Id && item.Url == page.Url)
+                    {
+                        ModelState.AddModelError(nameof(Page.Url), "Запись с таким URL уже есть");
+                        return View(page);
+                    }
+                }
+                //сохраняем запись
                 dataManager.Pages.SavePage(page);
+                //выходим на главную
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
             }            
             return View(page);
+        }
+        [HttpPost]
+        public IActionResult Delete(Guid id)
+        {
+            dataManager.Pages.DeletePageById(id);
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
 
     }

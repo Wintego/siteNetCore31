@@ -1567,3 +1567,6 @@ ol.default {
   #copyright {
     margin-top: 0;
     padding: 3em 0 1em 0; } }
+
+.field-validation-error {
+  color: red; }

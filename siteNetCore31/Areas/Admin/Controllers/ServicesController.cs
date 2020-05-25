@@ -46,6 +46,16 @@ namespace siteNetCore31.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
+                //получаем все элементы и проверяем есть ли элемент с таким же url
+                IQueryable<Domain.Entities.Service> services = dataManager.Services.GetServices();
+                foreach (var item in services)
+                {
+                    if (item.Id != service.Id && item.Url == service.Url)
+                    {
+                        ModelState.AddModelError(nameof(Domain.Entities.Service.Url), "Запись с таким URL уже есть");
+                        return View(service);
+                    }
+                }
                 if (image != null)
                 {
                     //записываем в объект путь к картинке

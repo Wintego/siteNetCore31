@@ -5,51 +5,67 @@
 }
 <h1>Панель Администратора</h1>
 
-<h3>Страницы</h3>
 @if (Pages.Any())
 {
-<ul class="style2">
-    @foreach (var item in Pages)
-    {
-        <li>
-            <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id="@item.Id">@item.H1</a>
-        </li>
-    }
-</ul>
+    <table>
+        <tr>
+            <td><h3>Страницы<a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Pages)
+        {
+            <tr>
+                <td style="width: 60%">
+                    <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
+                </td>
+                <td>
+                    <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                </td>
+                <td>
+                    @if (item.Url != "index")
+                    {
+                        <form id="form-@item.Id" asp-area="Admin" asp-controller="Pages" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
 }
-
-
 <hr />
 @if (Services.Any())
 {
-<table>
-    <tr>
-        <td><h3>Услуги</h3></td>
-        <td><a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id="">добавить</a></td>
-        <td></td>
-        <td></td>
-    </tr>
-    @foreach (var item in Services)
-    {
-    <tr>
-        <td>
-           <img style="height: 35px; width: 78px;" src="~/images/@item.Image" />
-        </td>
-        <td style="width: 60%">            
-            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
-        </td>
-        <td>
-            <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
-        </td>
-        <td>
-            <form id="form-@item.Id" asp-area="Admin" asp-controller="Services" asp-action="Delete" method="post">
-                <input type="hidden" name="id" value="@item.Id" />
-                <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
-            </form>
-        </td>
-    </tr>
-    }
-</table>
+    <table>
+        <tr>
+            <td><h3>Услуги<a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Services)
+        {
+            <tr>
+                <td>
+                    <img style="height: 35px; width: 78px;" src="~/images/@item.Image" />
+                </td>
+                <td style="width: 60%">
+                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
+                </td>
+                <td>
+                    <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                </td>
+                <td>
+                    <form id="form-@item.Id" asp-area="Admin" asp-controller="Services" asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
 }
 
 <form asp-controller="Account" asp-action="Logout" method="post">

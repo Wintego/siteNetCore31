@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using siteNetCore31.Domain.Entities;
 using siteNetCore31.Domain.Repsitories.Abstract;
 using System;
@@ -40,12 +41,13 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
 
         public IQueryable<Page> GetPages()
         {
-            return context.Pages;
+            return context.Pages.AsNoTracking();
         }
 
         //сохранение и изменение объекта
         public void SavePage(Page page)
         {
+            //context.Pages.Count(x => x.Url == page.Url);
             //если page.Id == default значит это новая запись
             if (page.Id == default)
             {
