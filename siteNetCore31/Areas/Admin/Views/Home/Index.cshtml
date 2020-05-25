@@ -12,28 +12,46 @@
     @foreach (var item in Pages)
     {
         <li>
-            <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-url="@item.Url">@item.H1</a>
+            <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id="@item.Id">@item.H1</a>
         </li>
     }
 </ul>
 }
 
-<h3>Услуги</h3>
+
+<hr />
 @if (Services.Any())
 {
-<ul class="style2">
+<table>
+    <tr>
+        <td><h3>Услуги</h3></td>
+        <td><a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id="">добавить</a></td>
+        <td></td>
+        <td></td>
+    </tr>
     @foreach (var item in Services)
     {
-        <li>
-            <a asp-area="Admin" asp-controller="Services" asp-action="Index" asp-route-url="@item">@item.H1</a>
-        </li>
-        <li>
-            <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">@item.H1</a>
-        </li>
+    <tr>
+        <td>
+           <img style="height: 35px; width: 78px;" src="~/images/@item.Image" />
+        </td>
+        <td style="width: 60%">            
+            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
+        </td>
+        <td>
+            <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+        </td>
+        <td>
+            <form id="form-@item.Id" asp-area="Admin" asp-controller="Services" asp-action="Delete" method="post">
+                <input type="hidden" name="id" value="@item.Id" />
+                <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
+            </form>
+        </td>
+    </tr>
     }
-</ul>
+</table>
 }
 
 <form asp-controller="Account" asp-action="Logout" method="post">
-    <input type="submit" class="button" value="Выйти" />
+    <input type="submit" class="button fa-check" value="Выйти" />
 </form>

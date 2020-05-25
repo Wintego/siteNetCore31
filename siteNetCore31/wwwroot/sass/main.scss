@@ -38,7 +38,7 @@
 		border: 0;
 		font-size: 100%;
 		font: inherit;
-		vertical-align: baseline;
+		vertical-align: middle;
 	}
 
 	article, aside, details, figcaption, figure,
@@ -385,6 +385,16 @@ body {
 
 	table {
 		width: 100%;
+		tbody {
+			tr {
+				&:hover {
+					background-color: lightgray;
+					&:first-child {
+						background-color: initial;
+					}
+				}
+			}
+		}
 
 		&.default {
 			width: 100%;
@@ -394,6 +404,9 @@ body {
 
 				&:first-child {
 					border-top: 0;
+				}
+				&:hover {
+					background-color: lightgray;
 				}
 			}
 

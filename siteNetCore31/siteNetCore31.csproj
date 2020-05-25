@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Services\" />
     <Folder Include="Models\ViewComponents\" />
   </ItemGroup>
 

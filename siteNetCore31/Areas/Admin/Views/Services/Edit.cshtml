@@ -1,24 +1,37 @@
-﻿@model siteNetCore31.Domain.Entities.Page
+﻿@model siteNetCore31.Domain.Entities.Service
 @{
     ViewBag.Title = $"{Model.H1} - Редактировать";
 }
 <script src="https://cdn.tiny.cloud/1/sfmbb1yfg9gh21ogfv5dwsg4fehxuddmoskblbgbv5haj14r/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>tinymce.init({
+<script>
+tinymce.init({
         selector: 'textarea'
     });
 </script>
 
-<form asp-area="Admin" asp-controller="Pages" asp-action="Edit" method="post" enctype="multipart/form-data">
+<form asp-area="Admin" asp-controller="Services" asp-action="Edit" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Id" />
+    <input type="hidden" asp-for="@Model.Image" />
+    <div>
+        <label asp-for="Url"></label>
+        <input asp-for="Url" />
+        <span asp-validation-for="Url"></span>
+    </div>
     <div>
         <label asp-for="H1"></label>
         <input asp-for="H1" />
         <span asp-validation-for="H1"></span>
     </div>
     <div>
-        <label asp-for="Url"></label>
-        <input asp-for="Url" />
-        <span asp-validation-for="Url"></span>
+        <label asp-for="ShortDescription"></label>
+        <input asp-for="ShortDescription" />
+        <span asp-validation-for="ShortDescription"></span>
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+        <input type="file" asp-for="Image" />
+        <span asp-validation-for="Image"></span>
+        <span class="image featured"><img src="~/images/@Model.Image" alt="@Model.H1"></span>
     </div>
     <div>
         <label asp-for="Text"></label>
@@ -28,12 +41,12 @@
     <hr />
     <div>
         <label asp-for="seoTitle"></label>
-        <input asp-for="seoTitle"></input>
+        <input asp-for="seoTitle" />
         <span asp-validation-for="seoTitle"></span>
     </div>
     <div>
         <label asp-for="seoDescription"></label>
-        <input asp-for="seoDescription"></input>
+        <input asp-for="seoDescription" />
         <span asp-validation-for="seoDescription"></span>
     </div>
     <input style="margin-top: 1em" type="submit" class="button" value="Сохранить" />

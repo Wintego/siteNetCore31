@@ -21,7 +21,7 @@ section, summary, time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: middle; }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -782,12 +782,18 @@ form ::-moz-focus-inner {
 /* Tables */
 table {
   width: 100%; }
+  table tbody tr:hover {
+    background-color: lightgray; }
+    table tbody tr:hover:first-child {
+      background-color: initial; }
   table.default {
     width: 100%; }
     table.default tr {
       border-top: solid 1px #eee; }
       table.default tr:first-child {
         border-top: 0; }
+      table.default tr:hover {
+        background-color: lightgray; }
     table.default td {
       padding: 0.5em 1em 0.5em 1em; }
     table.default th {

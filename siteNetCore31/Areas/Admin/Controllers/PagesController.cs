@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using siteNetCore31.Domain.Entities;
 using siteNetCore31.Domain.Repsitories;
+using siteNetCore31.Service;
 
 namespace siteNetCore31.Areas.Admin.Controllers
 {
@@ -23,10 +24,21 @@ namespace siteNetCore31.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Edit(string url)
+        public IActionResult Edit(Guid id)
         {
-            var page = dataManager.Pages.GetPageByUrl(url);
+            var entity = id == default ? new Page() : dataManager.Pages.GetPageById(id);
+            return View(entity);
+        }
+        [HttpPost]
+        public IActionResult Edit(Page page)
+        {
+            if(ModelState.IsValid)
+            {
+                dataManager.Pages.SavePage(page);
+                return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
+            }            
             return View(page);
         }
+
     }
 }
