@@ -1,5 +1,6 @@
 ﻿@model siteNetCore31.Domain.Repsitories.DataManager
 @{
+    Layout = "_LayoutNoSidebar";
     var Pages = Model.Pages.GetPages();
     var Services = Model.Services.GetServices();
 }

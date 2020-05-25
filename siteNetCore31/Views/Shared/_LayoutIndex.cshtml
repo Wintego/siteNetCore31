@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    @await Html.PartialAsync("MetaPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <div id="header-wrapper">
+            <div class="container">
+
+                <!-- Header -->
+                <header id="header">
+                    <div class="inner">
+
+                        <!-- Logo -->
+                        @await Html.PartialAsync("LogoPartial")
+
+                        <!-- Nav -->
+                        @await Html.PartialAsync("NavPartial")
+
+                    </div>
+                </header>
+
+                <!-- Banner -->
+                @await Html.PartialAsync("BannerPartial")
+
+            </div>
+        </div>
+
+        <!-- Main Wrapper -->
+        <div id="main-wrapper">
+            @RenderBody()
+            @await Html.PartialAsync("Wrapper3Partial")
+        </div>
+
+        <!-- Footer Wrapper -->
+        @await Html.PartialAsync("FooterPartial")
+
+    </div>
+
+    <!-- Scripts -->
+    @await Html.PartialAsync("ScriptsPartial")
+
+</body>
+</html>

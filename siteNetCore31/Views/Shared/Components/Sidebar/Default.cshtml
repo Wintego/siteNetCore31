@@ -1,0 +1,36 @@
+﻿@model IQueryable<Service>
+<div class="col-4 col-12-medium">
+    <div id="sidebar">
+
+        <!-- Sidebar -->
+
+        <section>
+            <header class="major">
+                <h2>контакты</h2>
+            </header>
+            <p>@Config.CompanyPhone</p>
+            <footer>
+                <a href="#" class="button icon solid fa-info-circle">Find out more</a>
+            </footer>
+        </section>
+
+        <section>
+            <header class="major">
+                <h2>Наши услуги</h2>
+            </header>
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url"><h4>@item.H1</h4></a>                        
+                        <p>@item.ShortDescription</p>
+                    </li>
+                }
+            </ul>
+            <footer>
+                <a href="#" class="button icon solid fa-arrow-circle-right">Do Something</a>
+            </footer>
+        </section>
+
+    </div>
+</div>

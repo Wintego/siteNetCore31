@@ -1,11 +1,21 @@
 ﻿@model siteNetCore31.Domain.Entities.Service
 @{
-    ViewBag.Title = $"{Model.H1} - Редактировать";
+    ViewBag.Title = Model.H1 !=null ? $"{Model.H1} - Редактировать": "Создать новую услугу";
 }
 <script src="https://cdn.tiny.cloud/1/sfmbb1yfg9gh21ogfv5dwsg4fehxuddmoskblbgbv5haj14r/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-tinymce.init({
-        selector: 'textarea'
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "code",
+        menu: {
+            file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
+            edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
+            view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },
+            insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },
+            format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align | forecolor backcolor | removeformat' },
+            table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
+            help: { title: 'Help', items: 'help' }
+        }
     });
 </script>
 
