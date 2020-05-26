@@ -7,15 +7,13 @@
     tinymce.init({
         selector: 'textarea',
         plugins: "code",
-        menu: {
-            file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
-            edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
-            view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },
-            insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },
-            format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align | forecolor backcolor | removeformat' },
-            table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
-            help: { title: 'Help', items: 'help' }
-        }
+        toolbar:
+            "insertfile a11ycheck undo redo | bold italic | forecolor backcolor | template codesample | alignleft aligncenter alignright alignjustify | bullist numlist | link image tinydrive",
+        content_css: '//www.tiny.cloud/css/codepen.min.css',
+        height: "600",
+        images_upload_base_path: '/wwwroot/images',
+        automatic_uploads: true,
+        images_upload_credentials: false
     });
 </script>
 
