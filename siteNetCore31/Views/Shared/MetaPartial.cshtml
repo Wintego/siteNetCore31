@@ -1,4 +1,19 @@
-﻿<title>@ViewBag.Title = Model.seoTitle == null ? Config.CompanyName : Model.seoTitle</title>
+﻿@if (ViewBag.Title != null)
+{
+    <title>ViewBag.Title</title>
+}
+else
+{
+    <title>@Config.CompanyName</title>
+
+}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="description" content="@ViewBag.Description = Model.seoDescription == null ? Config.CompanyName : Model.seoDescription" />
+@if (ViewBag.Description != null)
+{
+    <meta name="description" content="@ViewBag.Description" />
+}
+else
+{
+    <meta name="description" content="@Config.CompanyName" />
+}

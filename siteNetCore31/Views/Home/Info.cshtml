@@ -1,8 +1,8 @@
 ﻿@model siteNetCore31.Domain.Entities.Page
 @{
     Layout = "_LayoutNoSidebar";
-    ViewBag.Title = Model.seoTitle == null ? Model.H1 : Model.seoTitle;
-    ViewBag.Description = Model.seoDescription == null ? Model.H1 : Model.seoDescription;
+    ViewBag.Title = Model.seoTitle;
+    ViewBag.Description = Model.seoDescription;
 }
 <header class="major">
     <h1>@Model.H1</h1>

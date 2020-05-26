@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,9 @@ namespace siteNetCore31
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //изменяем кодировку
+            services.AddWebEncoders(o => { o.TextEncoderSettings = new System.Text.Encodings.Web.TextEncoderSettings(UnicodeRanges.Cyrillic); });
+
             //подключаем когфиг из appsettings.json
             Configuration.Bind("Project", new Config());
 
