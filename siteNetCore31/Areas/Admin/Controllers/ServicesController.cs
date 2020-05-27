@@ -56,7 +56,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
                         return View(service);
                     }
                 }
-                if (image != null)
+                if (image.IsImage())
                 {
                     //записываем в объект путь к картинке
                     service.Image = image.FileName;
