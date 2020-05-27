@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="wwwroot\images\services\" />
   </ItemGroup>
 
   <ItemGroup>

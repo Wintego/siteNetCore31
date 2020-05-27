@@ -43,7 +43,7 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
 
         public IQueryable<Entities.Service> GetServices()
         {
-            return context.Services;
+            return context.Services.AsNoTracking();
         }
 
         //сохранение и изменение объекта

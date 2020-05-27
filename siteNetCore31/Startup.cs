@@ -30,7 +30,7 @@ namespace siteNetCore31
         public void ConfigureServices(IServiceCollection services)
         {
             //изменяем кодировку
-            services.AddWebEncoders(o => { o.TextEncoderSettings = new System.Text.Encodings.Web.TextEncoderSettings(UnicodeRanges.Cyrillic); });
+            services.AddWebEncoders(o => { o.TextEncoderSettings = new System.Text.Encodings.Web.TextEncoderSettings(UnicodeRanges.All); });
 
             //подключаем когфиг из appsettings.json
             Configuration.Bind("Project", new Config());

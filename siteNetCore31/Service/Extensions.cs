@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,21 @@ namespace siteNetCore31.Service
         public static string CutController(this string str)
         {
             return str.Replace("Controller", "");
+        }
+    }
+    public static class ImageValidator
+    {
+        public static bool IsImage(this IFormFile file)
+        {
+            try
+            {
+                //var img = System.Drawing.Image.FromStream(file.OpenReadStream());
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
