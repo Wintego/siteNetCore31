@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace siteNetCore31.Service
 {
+    //получение название контроллера
     public static class Extensions
     {
         public static string CutController(this string str)
@@ -14,6 +15,7 @@ namespace siteNetCore31.Service
             return str.Replace("Controller", "");
         }
     }
+    //проверка корректности картинок
     public static class ImageValidator
     {
         public static bool IsImage(this IFormFile file)
