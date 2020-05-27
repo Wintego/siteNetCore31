@@ -40,6 +40,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
             if (!upload.IsImage())
             {
                 var NotImageMessage = $"{upload.FileName} не изображение!";
+                //формируем ответ
                 var NotImage = new { uploaded = 0, error = new { message = NotImageMessage } };
                 return Json(NotImage);
             }
