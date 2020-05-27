@@ -39,19 +39,19 @@ namespace siteNetCore31.Areas.Admin.Controllers
             //проверяем картинка ли это
             if (!upload.IsImage())
             {
-                var NotImageMessage = "Выберите изображение";
-                dynamic NotImage = JsonConvert.DeserializeObject("{ 'uploaded': 0, 'error': { 'message': \"" + NotImageMessage + "\"}}");
+                var NotImageMessage = $"{upload.FileName} не изображение!";
+                var NotImage = new { uploaded = 0, error = new { message = NotImageMessage } };
                 return Json(NotImage);
             }
             //изменяем название картинки
             var fileName = upload.FileName.ToLower();
             //сохраняем картинку
-            using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/services/", fileName), FileMode.Create))
+            using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/", fileName), FileMode.Create))
             {
                 upload.CopyTo(stream);
             }
             //путь к картинке для ответа
-            var url = $"/images/services/{fileName}";
+            var url = $"/images/{fileName}";
             var successMessage = "Изображение успешно загружено";
             //формируем ответ
             var success = new { uploaded = 1, fileName, url, error = new { message = successMessage } };
