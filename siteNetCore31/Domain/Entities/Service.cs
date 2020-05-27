@@ -1,4 +1,5 @@
-﻿using System;
+﻿using siteNetCore31.Domain.Repsitories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,5 +12,10 @@ namespace siteNetCore31.Domain.Entities
         [Required]
         [Display(Name = "Название услуги (h1)")]
         public override string H1 { get; set; }
+        [Display(Name = "Категория")]
+        public virtual Category Category { get; set; }
+        //public Guid CategoryId { get; set; }
+        //[Display(Name = "Категория")]
+        //public Guid CategoryId { get; set; }
     }
 }

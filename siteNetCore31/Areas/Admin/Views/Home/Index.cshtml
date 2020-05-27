@@ -3,17 +3,19 @@
     Layout = "_LayoutNoSidebar";
     var Pages = Model.Pages.GetPages();
     var Services = Model.Services.GetServices();
+    var Categories = Model.Categories.GetCategories();
 }
 <h1>Панель Администратора</h1>
 
-@if (Pages.Any())
-{
-    <table>
-        <tr>
-            <td><h3>Страницы<a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
-            <td></td>
-            <td></td>
-        </tr>
+<table>
+    <tr>
+        <td><h3>Страницы<a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+        <td></td>
+        <td></td>
+    </tr>
+    @if (Pages.Any())
+    {
+
         @foreach (var item in Pages)
         {
             <tr>
@@ -34,18 +36,50 @@
                 </td>
             </tr>
         }
-    </table>
-}
+    }
+</table>
 <hr />
-@if (Services.Any())
-{
-    <table>
-        <tr>
-            <td><h3>Услуги<a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+<table>
+    <tr>
+        <td><h3>Категории<a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+        <td></td>
+        <td></td>
+    </tr>
+    @if (Categories.Any())
+    {
+
+        @foreach (var item in Categories)
+        {
+            <tr>
+                <td style="width: 60%">
+                    <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
+                </td>
+                <td>
+                    <a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                </td>
+                <td>
+                    @if (item.Url != "default")
+                    {
+                        <form id="form-@item.Id" asp-area="Admin" asp-controller="Categories" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+<hr />
+<table>
+    <tr>
+        <td><h3>Услуги<a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    @if (Services.Any())
+    {
         @foreach (var item in Services)
         {
             <tr>
@@ -53,7 +87,7 @@
                     <img style="height: 35px; width: 78px;" src="~/images/@item.Image" />
                 </td>
                 <td style="width: 60%">
-                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
+                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">sdsadasd</h4>
                 </td>
                 <td>
                     <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
@@ -66,8 +100,9 @@
                 </td>
             </tr>
         }
-    </table>
-}
+
+    }
+</table>
 
 <form asp-controller="Account" asp-action="Logout" method="post">
     <input type="submit" class="button fa-check" value="Выйти" />

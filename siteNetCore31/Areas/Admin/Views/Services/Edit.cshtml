@@ -23,6 +23,11 @@
         <span asp-validation-for="ShortDescription"></span>
     </div>
     <div>
+        <label asp-for="Category"></label>
+        <select asp-for="Category" asp-items="ViewBag.Categories"></select>
+        <span asp-validation-for="Category"></span>
+    </div>
+    <div>
         <label asp-for="Image"></label>
         <input type="file" asp-for="Image" />
         <span asp-validation-for="Image"></span>
@@ -48,60 +53,5 @@
 </form>
 
 <script>
-    //CKEDITOR.replace('textarea', {
-    //    extraPlugins = 'filebrowser',
-    //    filebrowserBrowseUrl: '',
-    //    filebrowserUploadUrl: '/Admin/Home/CKEdit4Upload'
-    //});
-    //CKEDITOR.editorConfig = function (config) {
-    //    config.toolbarGroups = [
-    //        { name: 'styles', groups: ['styles'] },
-    //        { name: 'document', groups: ['mode', 'document', 'doctools'] },
-    //        { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
-    //        { name: 'forms', groups: ['forms'] },
-    //        { name: 'clipboard', groups: ['clipboard', 'undo'] },
-    //        { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-    //        { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
-    //        { name: 'links', groups: ['links'] },
-    //        { name: 'insert', groups: ['insert'] },
-    //        { name: 'colors', groups: ['colors'] },
-    //        { name: 'tools', groups: ['tools'] },
-    //        { name: 'others', groups: ['others'] },
-    //        { name: 'about', groups: ['about'] }
-    //    ];
-
-    //    config.removeButtons = 'Source,Save,Templates,Cut,Undo,Find,SelectAll,About,TextColor,NewPage,Preview,Print,Copy,Redo,Replace,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,Outdent,Indent,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Anchor,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,BGColor,Font,FontSize,Format';
-    //};
-</script>
-<script>
     CKEDITOR.replace('@Html.IdFor(x=>x.Text)');
 </script>
-@*<script>
-        ClassicEditor
-            .create(document.querySelector('#textcontent'), {
-                extraPlugins: [MyCustomUploadAdapterPlugin],
-                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'code'],
-                heading: {
-                    options: [
-                        { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                        { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                        { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' }
-                    ]
-                }
-            })
-            .then(editor => {
-                // console.log( editor );
-            })
-            .catch(error => {
-                console.log(error);
-            });
-
-        // console.log(ClassicEditor.builtinPlugins.map( plugin => plugin.pluginName));
-
-        function MyCustomUploadAdapterPlugin(editor) {
-            console.log(editor.plugins);
-            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                return new MyUploadAdapter(loader);
-            };
-        }
-    </script>*@

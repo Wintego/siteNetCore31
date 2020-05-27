@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using siteNetCore31.Domain.Entities;
 using siteNetCore31.Domain.Repsitories;
 using siteNetCore31.Service;
@@ -33,6 +35,9 @@ namespace siteNetCore31.Areas.Admin.Controllers
         {
             //берём объект по Id, или создаем новый, если такого Id нет в базе
             var entity = id == default ? new Domain.Entities.Service() : dataManager.Services.GetServiceById(id);
+            ViewBag.Categories = new SelectList(dataManager.Categories.GetCategories(), "Id", "H1", entity.Category);
+            //ViewBag.Categories = new SelectList(dataManager.Services.GetServices().Include(x => x.Category));
+
             return View(entity);
         }
         /// <summary>
@@ -47,6 +52,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
             if(ModelState.IsValid)
             {
                 //получаем все элементы и проверяем есть ли элемент с таким же url
+                //var ser = dataManager.Services.GetServices().Where(x => x.Id != service.Id).Where(x => x.Url == service.Url).Select();
                 IQueryable<Domain.Entities.Service> services = dataManager.Services.GetServices();
                 foreach (var item in services)
                 {
@@ -56,6 +62,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
                         return View(service);
                     }
                 }
+                //проверяем картинку
                 if (image.IsImage())
                 {
                     //записываем в объект путь к картинке
@@ -66,6 +73,8 @@ namespace siteNetCore31.Areas.Admin.Controllers
                         image.CopyTo(stream);
                     }
                 }
+                //не работает?
+                //service.Category = dataManager.Categories.GetCategoryById(service.CategoryId);
                 dataManager.Services.SaveService(service);
             }
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());

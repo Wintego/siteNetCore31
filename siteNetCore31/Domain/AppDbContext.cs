@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using siteNetCore31.Domain.Entities;
 using siteNetCore31.Service;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace siteNetCore31.Domain
         //создание таблиц доменных объектов
         public DbSet<Entities.Page> Pages { get; set; }
         public DbSet<Entities.Service> Services { get; set; }
+        public DbSet<Entities.Category> Categories { get; set; }
 
         //при создании базы заполняем её значениями по умолчанию
         protected override void OnModelCreating(ModelBuilder builder)
@@ -68,6 +70,18 @@ namespace siteNetCore31.Domain
                 Id = new Guid("A241DD18-E497-40BE-8504-4DEAACA2C6CF"),
                 Url = "index",
                 H1 = "Главная"
+            });
+            builder.Entity<Category>().HasData(new Entities.Category
+            {
+                Id = new Guid("309035C6-9489-41CA-A395-717243880814"),
+                Url = "default",
+                H1 = "По умолчанию"
+            });
+            builder.Entity<Entities.Service>().HasData(new Entities.Service
+            {
+                Id = new Guid("666599D8-EAC4-4F43-9F15-B7063C583B76"),
+                Url = "usluga-1",
+                H1 = "Услуга 1"
             });
         }
     }

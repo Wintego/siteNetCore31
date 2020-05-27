@@ -38,6 +38,7 @@ namespace siteNetCore31
             //подключаем функционал приложения в качестве сервисов
             services.AddTransient<iPagesRepository, EFPagesRepository>();
             services.AddTransient<iServicesRepository, EFServicesRepository>();
+            services.AddTransient<ICategoryRepository, EFCategoryRepository>();
             services.AddTransient<DataManager>();
             
             //подключаем контекст базы данных

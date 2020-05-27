@@ -24,7 +24,8 @@ namespace siteNetCore31.Controllers
             var page = dataManager.Pages.GetPageByUrl("index");
             return View(page);
         }
-        [HttpGet("{id}", Name = "Info")]
+        //[HttpGet("{id}", Name = "Info")]
+        [Route("{id}", Name = "Info")]
         public IActionResult Info(string id)
         {
             var page = dataManager.Pages.GetPageByUrl(id);
@@ -37,6 +38,12 @@ namespace siteNetCore31.Controllers
         {
             var page = dataManager.Services.GetServiceByUrl(id);
             return View(page);
+        }
+        //[HttpGet("{id}", Name = "Category")]
+        public IActionResult Category(string id)
+        {
+            var category = dataManager.Categories.GetCategoryByUrl(id);
+            return View(category);
         }
     }
 }

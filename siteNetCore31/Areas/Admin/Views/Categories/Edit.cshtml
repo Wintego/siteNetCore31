@@ -1,9 +1,10 @@
-﻿@model siteNetCore31.Domain.Entities.Page
+﻿@model siteNetCore31.Domain.Entities.Category
 @{
     ViewBag.Title = Model.H1 != null ? $"{Model.H1} - Редактировать" : "Создать новую страницу";
 }
 <script src="https://cdn.tiny.cloud/1/sfmbb1yfg9gh21ogfv5dwsg4fehxuddmoskblbgbv5haj14r/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>tinymce.init({
+<script>
+tinymce.init({
         selector: 'textarea',
         plugins: "code",
         menu: {
@@ -19,7 +20,7 @@
 
 </script>
 
-<form asp-area="Admin" asp-controller="Pages" asp-action="Edit" method="post" enctype="multipart/form-data">
+<form asp-area="Admin" asp-controller="Categories" asp-action="Edit" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Id" />
     <div>
         <label asp-for="H1"></label>
@@ -44,7 +45,7 @@
     </div>
     <div>
         <label asp-for="seoDescription"></label>
-        <input asp-for="seoDescription"></input>
+        <input asp-for="seoDescription" />
         <span asp-validation-for="seoDescription"></span>
     </div>
     <input style="margin-top: 1em" type="submit" class="button" value="Сохранить" />
