@@ -14,7 +14,6 @@ namespace siteNetCore31.Domain.Entities
         public override string H1 { get; set; }
         [Display(Name = "Категория")]
         public virtual Category Category { get; set; }
-        //public Guid CategoryId { get; set; }
         //[Display(Name = "Категория")]
         //public Guid CategoryId { get; set; }
     }

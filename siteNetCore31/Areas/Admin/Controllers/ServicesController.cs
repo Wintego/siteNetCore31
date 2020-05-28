@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,11 +35,11 @@ namespace siteNetCore31.Areas.Admin.Controllers
         public IActionResult Edit(Guid id)
         {
             //берём объект по Id, или создаем новый, если такого Id нет в базе
-            var entity = id == default ? new Domain.Entities.Service() : dataManager.Services.GetServiceById(id);
-            ViewBag.Categories = new SelectList(dataManager.Categories.GetCategories(), "Id", "H1", entity.Category);
-            //ViewBag.Categories = new SelectList(dataManager.Services.GetServices().Include(x => x.Category));
+            var service = id == default ? new Domain.Entities.Service() : dataManager.Services.GetServiceById(id);
 
-            return View(entity);
+            var categories = dataManager.Categories.GetCategories();
+            ViewBag.Categories = new SelectList(categories, "Id", "H1", service.Category);
+            return View(service);
         }
         /// <summary>
         /// Изменение записи сервиса
@@ -74,7 +75,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
                     }
                 }
                 //не работает?
-                //service.Category = dataManager.Categories.GetCategoryById(service.CategoryId);
+                //service.Category = dataManager.Categories.GetCategoryById(service.Category.Id);
                 dataManager.Services.SaveService(service);
             }
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());

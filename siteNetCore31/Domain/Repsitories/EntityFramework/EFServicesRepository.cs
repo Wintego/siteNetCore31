@@ -33,17 +33,17 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
 
         public Entities.Service GetServiceById(Guid id)
         {
-            return context.Services.FirstOrDefault(x => x.Id == id);
+            return context.Services.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
         }
 
         public Entities.Service GetServiceByUrl(string url)
         {
-            return context.Services.FirstOrDefault(x => x.Url == url);
+            return context.Services.Include(x => x.Category).FirstOrDefault(x => x.Url == url);
         }
 
         public IQueryable<Entities.Service> GetServices()
         {
-            return context.Services.AsNoTracking();
+            return context.Services.Include(x=>x.Category).AsNoTracking();
         }
 
         //сохранение и изменение объекта
