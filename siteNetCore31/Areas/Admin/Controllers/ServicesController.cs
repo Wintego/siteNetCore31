@@ -44,10 +44,10 @@ namespace siteNetCore31.Areas.Admin.Controllers
         /// Изменение записи сервиса
         /// </summary>
         /// <param name="service">Экземпляр объекта Service</param>
-        /// <param name="image">Файл, отправленный через форму</param>
+        /// <param name="Image">Файл, отправленный через форму</param>
         /// <returns></returns>
         [HttpPost]        
-        public IActionResult Edit(Domain.Entities.Service service, IFormFile image)
+        public IActionResult Edit(Domain.Entities.Service service, IFormFile Image)
         {
             if(ModelState.IsValid)
             {
@@ -63,18 +63,16 @@ namespace siteNetCore31.Areas.Admin.Controllers
                     }
                 }
                 //проверяем картинку
-                if (image.IsImage())
+                if (Image.IsImage())
                 {
                     //записываем в объект путь к картинке
-                    service.Image = image.FileName;
+                    service.Image = Image.FileName;
                     //сохраняем картинку
-                    using(var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/", image.FileName), FileMode.Create))
+                    using(var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/services/", Image.FileName), FileMode.Create))
                     {
-                        image.CopyTo(stream);
+                        Image.CopyTo(stream);
                     }
                 }
-                //не работает?
-                //service.Category = dataManager.Categories.GetCategoryById(service.Category.Id);
                 dataManager.Services.SaveService(service);
             }
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());

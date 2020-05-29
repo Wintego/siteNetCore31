@@ -100,7 +100,7 @@ namespace siteNetCore31
                 //возвращаем картинки
                 endpoints.MapControllerRoute(
                     name: "images",
-                    pattern: "/images/{file}",
+                    pattern: "/images/regex(^\\.[^.]+$)",
                     defaults: new { controller = "Home", action = "ReturnImage" }
                     );
 

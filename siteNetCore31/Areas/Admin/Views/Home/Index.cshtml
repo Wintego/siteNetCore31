@@ -85,9 +85,9 @@
             <tr>
                 <td>
                     @{ 
-                        var image = item.Image == null ? "/images/noimage.jpg" : item.Image;
+                        var image = item.Image == null ? "no_image.png" : item.Image;
                     }
-                    <img style="height: 35px; width: 78px;" src="@image" />
+                    <img style="height: 35px; width: 78px;" src="/images/services/@image" />
                 </td>
                 <td>
                     <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@item.Category.H1</h4>

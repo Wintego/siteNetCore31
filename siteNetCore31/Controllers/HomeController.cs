@@ -49,7 +49,7 @@ namespace siteNetCore31.Controllers
         }
         public IActionResult ReturnImage(string file)
         {
-            return File($"images/{file}", "image");
+            return File($"~/images/{file}", "image");
         }
     }
 }

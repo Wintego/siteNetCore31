@@ -4,10 +4,10 @@
 }
 <script src="~/js/ckeditor4/ckeditor.js"></script>
 
-<form asp-area="Admin" asp-controller="Services" asp-action="Edit" method="post">
+<form asp-area="Admin" asp-controller="Services" asp-action="Edit" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Id" />
-    <input type="hidden" asp-for="@Model.Image" />
-    <input type="hidden" asp-for="@Model.Category" />
+    @*<input type="hidden" asp-for="@Model.Image" />*@
+    @*<input type="hidden" asp-for="@Model.Category" />*@
     <div>
         <label asp-for="Url"></label>
         <input asp-for="Url" />
@@ -30,9 +30,9 @@
     </div>
     <div>
         <label asp-for="Image"></label>
-        <input type="file" asp-for="Image" />
+        <input type="file" asp-for="Image" name="Image" />
         <span asp-validation-for="Image"></span>
-        <span class="image featured"><img src="~/images/@Model.Image" alt="@Model.H1"></span>
+        <span class="image featured"><img src="~/images/services/@Model.Image" alt="@Model.H1"></span>
     </div>
     <div>
         <label asp-for="Text"></label>
