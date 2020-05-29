@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "041fecea-1898-4598-aa74-6db33c4faf8f",
+                            ConcurrencyStamp = "8018fe58-1aeb-4f2b-bdf7-e66d5469b0b5",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "40959072-5c8a-4371-8e44-d953a4cfb098",
+                            ConcurrencyStamp = "47ba50f3-9e73-4eb9-bdb1-dae367a6bfe0",
                             Email = "info@company.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPETMfESSxoK4bR6s473ZqjOYe7k9IQBOB7DvFMJPxfwGwrCvsAutjUmE3AITdj2WQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELGjmqSNb8h9//lZTZEPPbZ+Bm6SI5Hz4n0EGT9M5l1kh5JfIenJt/qkU1cpjxkg7g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,

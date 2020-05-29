@@ -34,10 +34,12 @@ namespace siteNetCore31.Domain.Entities
         [Display(Name = "Главная картинка")]
         public virtual string Image { get; set; }
 
-        [DataType(DataType.Time)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateCreated { get; set; }
 
-        [DataType(DataType.Time)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateUpdated { get; set; }
     }
 }

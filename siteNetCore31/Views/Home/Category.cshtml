@@ -12,12 +12,12 @@
 {
 
     @foreach (var item in services)
-    {        
+    {
         <article class="box excerpt">
-            <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@item.H1 class="image left"><img src="/images/services/square-@item.Image" alt="@item.H1"></a>
+            <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="image left"><img src="/images/services/square-@item.Image" alt="@item.H1" /></a>
             <div>
                 <header>
-                    <span class="date">@item.DateCreated</span>
+                    <span class="date">@item.DateCreated.ToString("dd MMM")</span>
                     <h3><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@item.H1</a></h3>
                 </header>
                 <p>
