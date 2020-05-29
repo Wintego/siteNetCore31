@@ -22,10 +22,10 @@
                 <td>
                     <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
                 </td>
-                <td>
+                <td style="width: 1%">
                     <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
                 </td>
-                <td>
+                <td style="width: 1%; padding-left: 20px;">
                     @if (item.Url != "index")
                     {
                         <form id="form-@item.Id" asp-area="Admin" asp-controller="Pages" asp-action="Delete" method="post">
@@ -54,10 +54,10 @@
                 <td>
                     <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
                 </td>
-                <td>
+                <td style="width: 1%;">
                     <a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
                 </td>
-                <td>
+                <td style="width: 1%; padding-left: 20px;">
                     @if (item.Url != "default")
                     {
                         <form id="form-@item.Id" asp-area="Admin" asp-controller="Categories" asp-action="Delete" method="post">
@@ -83,7 +83,7 @@
         @foreach (var item in Services)
         {
             <tr>
-                <td>
+                <td style="width: 120px;">
                     @{ 
                         var image = item.Image == null ? "no_image.png" : item.Image;
                     }
@@ -92,10 +92,10 @@
                 <td>
                     <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@item.Category.H1</h4>
                 </td>
-                <td>
+                <td style="width: 1%;">
                     <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
                 </td>
-                <td>
+                <td style="width: 1%; padding-left: 20px;">
                     <form id="form-@item.Id" asp-area="Admin" asp-controller="Services" asp-action="Delete" method="post">
                         <input type="hidden" name="id" value="@item.Id" />
                         <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
