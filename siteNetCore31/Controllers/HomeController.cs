@@ -26,7 +26,7 @@ namespace siteNetCore31.Controllers
             var page = dataManager.Pages.GetPageByUrl("index");
             return View(page);
         }
-        [Route("{id}-page", Name = "Info")]
+        [Route("{id}-info", Name = "Info")]
         public IActionResult Info(string id)
         {
             var page = dataManager.Pages.GetPageByUrl(id);
