@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -67,10 +69,23 @@ namespace siteNetCore31.Areas.Admin.Controllers
                 {
                     //записываем в объект путь к картинке
                     service.Image = Image.FileName;
+
                     //сохраняем картинку
                     using(var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/services/", Image.FileName), FileMode.Create))
                     {
-                        Image.CopyTo(stream);
+                        Image.CopyTo(stream);                        
+                    }
+                    
+                    //сохраняем квадратный вариант
+                    using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/services/", "square-" + Image.FileName), FileMode.Create))
+                    {
+                        Image img = System.Drawing.Image.FromStream(Image.OpenReadStream(), true, true);
+                        var newImage = new Bitmap(180, 167);
+                        using (var g = Graphics.FromImage(newImage))
+                        {
+                            g.DrawImage(img, 0, 0, 180, 167);
+                        }
+                        newImage.Save(stream, ImageFormat.Jpeg);
                     }
                 }
                 dataManager.Services.SaveService(service);
