@@ -47,12 +47,12 @@ namespace siteNetCore31.Areas.Admin.Controllers
             //изменяем название картинки
             var fileName = upload.FileName.ToLower();
             //сохраняем картинку
-            using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/", fileName), FileMode.Create))
+            using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/content/", fileName), FileMode.Create))
             {
                 upload.CopyTo(stream);
             }
             //путь к картинке для ответа
-            var url = $"/images/{fileName}";
+            var url = $"/images/content/{fileName}";
             var successMessage = "Изображение успешно загружено";
             //формируем ответ
             var success = new { uploaded = 1, fileName, url, error = new { message = successMessage } };
