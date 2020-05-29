@@ -45,6 +45,7 @@ namespace siteNetCore31.Controllers
         public IActionResult Category(string id)
         {
             var category = dataManager.Categories.GetCategoryByUrl(id);
+            ViewBag.Services = dataManager.Services.GetServices().Where(x => x.Category == category);
             return View(category);
         }
         public IActionResult ReturnImage(string file)
