@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using LazZiya.ImageResize;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,6 @@ using Microsoft.EntityFrameworkCore;
 using siteNetCore31.Domain.Entities;
 using siteNetCore31.Domain.Repsitories;
 using siteNetCore31.Service;
-
 namespace siteNetCore31.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -71,21 +71,18 @@ namespace siteNetCore31.Areas.Admin.Controllers
                     service.Image = Image.FileName;
 
                     //сохраняем картинку
-                    using(var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/services/", Image.FileName), FileMode.Create))
+                    using (var img = System.Drawing.Image.FromStream(Image.OpenReadStream(), true, true))
                     {
-                        Image.CopyTo(stream);                        
-                    }
-                    
-                    //сохраняем квадратный вариант
-                    using (var stream = new FileStream(Path.Combine(hostEnvironment.WebRootPath, "images/services/", "square-" + Image.FileName), FileMode.Create))
-                    {
-                        Image img = System.Drawing.Image.FromStream(Image.OpenReadStream(), true, true);
-                        var newImage = new Bitmap(180, 167);
-                        using (var g = Graphics.FromImage(newImage))
-                        {
-                            g.DrawImage(img, 0, 0, 180, 167);
-                        }
-                        newImage.Save(stream, ImageFormat.Jpeg);
+                        //создаём измененную картинку с шириной 783 пикселя
+                        var i = new Bitmap(img.ScaleByWidth(783));
+                        //создаём квадратную картинку для превью услуг
+                        var square = new Bitmap(img.ScaleAndCrop(180, 167, TargetSpot.MiddleLeft));
+                        //создаём квадратную картинку для превью в админке
+                        var mini = new Bitmap(img.ScaleAndCrop(78, 35, TargetSpot.Center));
+                        //сохраняем картинки
+                        i.SaveAs(Path.Combine(hostEnvironment.WebRootPath, "images/services/", Image.FileName));
+                        square.SaveAs(Path.Combine(hostEnvironment.WebRootPath, "images/services/", "square-"+Image.FileName));
+                        mini.SaveAs(Path.Combine(hostEnvironment.WebRootPath, "images/services/", "mini-"+Image.FileName));
                     }
                 }
                 dataManager.Services.SaveService(service);
