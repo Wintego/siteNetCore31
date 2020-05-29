@@ -51,11 +51,18 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
             //если page.Id == default значит это новая запись
             if (page.Id == default)
             {
+                //устанавливаем дату создания
+                page.DateCreated = DateTime.UtcNow;
                 //помечаем ключем, что это новый объект
                 context.Entry(page).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             }
             //помечаем ключом, что это измененный объект
-            else context.Entry(page).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            else
+            {
+                //устанавливаем дату изменения
+                page.DateUpdated = DateTime.UtcNow;
+                context.Entry(page).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            }
             context.SaveChanges();
         }
     }

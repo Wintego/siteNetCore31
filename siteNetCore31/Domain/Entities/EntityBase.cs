@@ -9,10 +9,6 @@ namespace siteNetCore31.Domain.Entities
     //базовый класс для всех сущностей
     public abstract class EntityBase
     {
-        protected EntityBase()
-        {
-            DateAdded = DateTime.UtcNow;
-        }
 
         [Required]
         public Guid Id { get; set; }
@@ -39,6 +35,9 @@ namespace siteNetCore31.Domain.Entities
         public virtual string Image { get; set; }
 
         [DataType(DataType.Time)]
-        public DateTime DateAdded { get; set; }
+        public DateTime DateCreated { get; set; }
+
+        [DataType(DataType.Time)]
+        public DateTime DateUpdated { get; set; }
     }
 }

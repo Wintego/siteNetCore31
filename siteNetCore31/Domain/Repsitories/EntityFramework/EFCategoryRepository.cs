@@ -39,9 +39,16 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
         {
             if (category.Id == default)
             {
+                //устанавливаем дату создания
+                category.DateCreated = DateTime.UtcNow;
                 context.Entry(category).State = EntityState.Added;
             }
-            else context.Entry(category).State = EntityState.Modified;
+            else
+            {
+                //устанавливаем дату изменения
+                category.DateUpdated = DateTime.UtcNow;
+                context.Entry(category).State = EntityState.Modified;
+            }
             context.SaveChanges();
         }
     }

@@ -52,11 +52,18 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
             //если service.Id == default значит это новая запись
             if (service.Id == default)
             {
+                //устанавливаем дату создания
+                service.DateCreated = DateTime.UtcNow;
                 //помечаем ключем, что это новый объект
                 context.Entry(service).State = EntityState.Added;
+            }            
+            else
+            {
+                //устанавливаем дату изменения
+                service.DateUpdated = DateTime.UtcNow;
+                //помечаем ключом, что это измененный объект
+                context.Entry(service).State = EntityState.Modified;
             }
-            //помечаем ключом, что это измененный объект
-            else context.Entry(service).State = EntityState.Modified;
             context.SaveChanges();
         }
     }

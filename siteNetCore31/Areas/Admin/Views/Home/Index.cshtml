@@ -2,7 +2,7 @@
 @{
     Layout = "_LayoutNoSidebar";
     var Pages = Model.Pages.GetPages();
-    var Services = Model.Services.GetServices().OrderByDescending(x=>x.DateAdded);
+    var Services = Model.Services.GetServices().OrderByDescending(x=>x.DateUpdated);
     var Categories = Model.Categories.GetCategories();
 }
 <h1>Панель Администратора</h1>

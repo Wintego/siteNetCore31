@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "5689c1d5-c3a1-42b4-946e-669209541682",
+                            ConcurrencyStamp = "041fecea-1898-4598-aa74-6db33c4faf8f",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3fd0ba3-ae54-47fd-8c8b-5b014c0dad56",
+                            ConcurrencyStamp = "40959072-5c8a-4371-8e44-d953a4cfb098",
                             Email = "info@company.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMezaMp8opAOeZ25PFY8gcj0z5UxUPQRt0fmi0THV4jaT1D1m7kSx46ERvsrNTVFmQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPETMfESSxoK4bR6s473ZqjOYe7k9IQBOB7DvFMJPxfwGwrCvsAutjUmE3AITdj2WQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -254,7 +254,10 @@ namespace siteNetCore31.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("H1")
@@ -286,7 +289,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateAdded = new DateTime(2020, 5, 27, 17, 29, 13, 909, DateTimeKind.Utc).AddTicks(9201),
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "По умолчанию",
                             Url = "default"
                         });
@@ -298,7 +302,10 @@ namespace siteNetCore31.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("H1")
@@ -332,14 +339,16 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("27c6fdeb-2783-4f3e-83fe-064e0582b175"),
-                            DateAdded = new DateTime(2020, 5, 27, 17, 29, 13, 909, DateTimeKind.Utc).AddTicks(6297),
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "Услуги",
                             Url = "services"
                         },
                         new
                         {
                             Id = new Guid("a241dd18-e497-40be-8504-4deaaca2c6cf"),
-                            DateAdded = new DateTime(2020, 5, 27, 17, 29, 13, 909, DateTimeKind.Utc).AddTicks(8606),
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "Главная",
                             Url = "index"
                         });
@@ -354,7 +363,10 @@ namespace siteNetCore31.Migrations
                     b.Property<Guid?>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateAdded")
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateUpdated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("H1")
@@ -389,7 +401,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("666599d8-eac4-4f43-9f15-b7063c583b76"),
-                            DateAdded = new DateTime(2020, 5, 27, 17, 29, 13, 910, DateTimeKind.Utc).AddTicks(733),
+                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "Услуга 1",
                             Url = "usluga-1"
                         });
