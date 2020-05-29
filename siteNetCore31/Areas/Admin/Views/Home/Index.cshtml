@@ -2,7 +2,7 @@
 @{
     Layout = "_LayoutNoSidebar";
     var Pages = Model.Pages.GetPages();
-    var Services = Model.Services.GetServices();
+    var Services = Model.Services.GetServices().OrderByDescending(x=>x.DateAdded);
     var Categories = Model.Categories.GetCategories();
 }
 <h1>Панель Администратора</h1>
@@ -19,7 +19,7 @@
         @foreach (var item in Pages)
         {
             <tr>
-                <td style="width: 60%">
+                <td>
                     <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
                 </td>
                 <td>
@@ -51,7 +51,7 @@
         @foreach (var item in Categories)
         {
             <tr>
-                <td style="width: 60%">
+                <td>
                     <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
                 </td>
                 <td>
@@ -84,10 +84,13 @@
         {
             <tr>
                 <td>
-                    <img style="height: 35px; width: 78px;" src="~/images/@item.Image" />
+                    @{ 
+                        var image = item.Image == null ? "/images/noimage.jpg" : item.Image;
+                    }
+                    <img style="height: 35px; width: 78px;" src="@image" />
                 </td>
-                <td style="width: 60%">
-                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@item.Category.H1</h4>
+                <td>
+                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@item.Category.H1</h4>
                 </td>
                 <td>
                     <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>

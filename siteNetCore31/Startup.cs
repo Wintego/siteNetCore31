@@ -83,11 +83,11 @@ namespace siteNetCore31
                 app.UseDeveloperExceptionPage();
             }
 
-            //используем маршрутизацию
-            app.UseRouting();
-
             //используем статические файлы
             app.UseStaticFiles();
+
+            //используем маршрутизацию
+            app.UseRouting();
 
             //подключаем аунтефикацию и авторизацию
             app.UseCookiePolicy();
@@ -97,7 +97,17 @@ namespace siteNetCore31
             //задаем маршруты (ендпоинты)
             app.UseEndpoints(endpoints =>
             {
+                //возвращаем картинки
+                endpoints.MapControllerRoute(
+                    name: "images",
+                    pattern: "/images/{file}",
+                    defaults: new { controller = "Home", action = "ReturnImage" }
+                    );
+
+                //добавляем путь к зоне администратора
                 endpoints.MapControllerRoute("admin","{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                //путь по умолчанию
                 endpoints.MapControllerRoute("default","{controller=Home}/{action=Index}/{id?}");
             });
         }

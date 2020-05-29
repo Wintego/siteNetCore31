@@ -35,8 +35,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
         public IActionResult Edit(Guid id)
         {
             //берём объект по Id, или создаем новый, если такого Id нет в базе
-            var service = id == default ? new Domain.Entities.Service() : dataManager.Services.GetServiceById(id);
-
+            var service = id == default ? new Domain.Entities.Service() { Category = dataManager.Categories.GetCategoryById(new Guid("309035C6-9489-41CA-A395-717243880814")) } : dataManager.Services.GetServiceById(id);            
             var categories = dataManager.Categories.GetCategories();
             ViewBag.Categories = new SelectList(categories, "Id", "H1", service.Category);
             return View(service);

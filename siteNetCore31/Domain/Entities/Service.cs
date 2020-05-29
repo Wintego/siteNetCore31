@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Threading.Tasks;
 
 namespace siteNetCore31.Domain.Entities
@@ -14,7 +15,5 @@ namespace siteNetCore31.Domain.Entities
         public override string H1 { get; set; }
         [Display(Name = "Категория")]
         public virtual Category Category { get; set; }
-        //[Display(Name = "Категория")]
-        //public Guid CategoryId { get; set; }
     }
 }
