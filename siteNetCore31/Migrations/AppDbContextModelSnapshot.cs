@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "8018fe58-1aeb-4f2b-bdf7-e66d5469b0b5",
+                            ConcurrencyStamp = "00e9ddc1-0300-4886-8ede-bf37c78fa959",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47ba50f3-9e73-4eb9-bdb1-dae367a6bfe0",
+                            ConcurrencyStamp = "9173c8b0-84c0-47e0-aced-3225ae98d6ba",
                             Email = "info@company.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAELGjmqSNb8h9//lZTZEPPbZ+Bm6SI5Hz4n0EGT9M5l1kh5JfIenJt/qkU1cpjxkg7g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGOrximAbaMWz6Z0t/hgVNZcE8rscvEDwyMFoYQWeukE0NI0mCo62DB4DpqnxzSgXQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -266,6 +266,9 @@ namespace siteNetCore31.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MenuName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -313,6 +316,9 @@ namespace siteNetCore31.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortDescription")
@@ -370,10 +376,12 @@ namespace siteNetCore31.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("H1")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortDescription")
@@ -396,16 +404,6 @@ namespace siteNetCore31.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Services");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("666599d8-eac4-4f43-9f15-b7063c583b76"),
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            H1 = "Услуга 1",
-                            Url = "usluga-1"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -462,7 +460,7 @@ namespace siteNetCore31.Migrations
             modelBuilder.Entity("siteNetCore31.Domain.Entities.Service", b =>
                 {
                     b.HasOne("siteNetCore31.Domain.Entities.Category", "Category")
-                        .WithMany("Services")
+                        .WithMany()
                         .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618

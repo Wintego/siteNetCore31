@@ -85,6 +85,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
                         mini.SaveAs(Path.Combine(hostEnvironment.WebRootPath, "images/services/", "mini-"+Image.FileName));
                     }
                 }
+                service.Category = dataManager.Categories.GetCategoryById(service.Category.Id);
                 dataManager.Services.SaveService(service);
             }
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());

@@ -9,7 +9,7 @@
 
 <table>
     <tr>
-        <td><h3>Страницы<a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+        <td><h3>Страницы (@Pages.Count()) <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
         <td></td>
         <td></td>
     </tr>
@@ -41,7 +41,7 @@
 <hr />
 <table>
     <tr>
-        <td><h3>Категории<a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+        <td><h3>Категории (@Categories.Count()) <a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
         <td></td>
         <td></td>
     </tr>
@@ -73,7 +73,7 @@
 <hr />
 <table>
     <tr>
-        <td><h3>Услуги<a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
+        <td><h3>Услуги (@Categories.Count()) <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
         <td></td>
         <td></td>
         <td></td>
@@ -83,14 +83,14 @@
         @foreach (var item in Services)
         {
             <tr>
-                <td style="width: 120px;">
+                <td style="width: 180px;">
                     @{ 
                         var image = item.Image == null ? "no_image.png" : item.Image;
                     }
                     <img style="height: 35px; width: 78px;" src="/images/services/mini-@image" />
                 </td>
                 <td>
-                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@item.Category.H1</h4>
+                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@(String.IsNullOrEmpty(item.Category.Url) ? "" : item.Category.Url)"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@(String.IsNullOrEmpty(item.Category.H1) ? "Без категории" : item.Category.H1)</h4>
                 </td>
                 <td style="width: 1%;">
                     <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>

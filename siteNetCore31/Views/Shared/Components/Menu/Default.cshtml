@@ -1,12 +1,32 @@
-﻿@model IQueryable<Page>
+﻿@model siteNetCore31.Domain.Repsitories.DataManager
+@{ 
+    var Pages = Model.Pages.GetPages().Where(x => x.Url != "index");
+    var Services = Model.Services.GetServices().Where(x=>x.Category != null);
+    var Categories = Model.Categories.GetCategories().Where(x => x.Id != new Guid("309035C6-9489-41CA-A395-717243880814"));
+}
     <nav id="nav">
         <ul>
-            @foreach (var item in Model)
+            <li>
+                <a>Наши услуги</a>
+                <ul>
+                    @foreach (var category in Categories)
+                    {
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@category.Url">@category.H1</a>
+                        <ul>
+                            @foreach (var service in Services.Where(x => x.Category == category))
+                            {
+                                <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.H1</a></li>
+                            }
+                        </ul>
+                    </li>
+                        
+                    }
+                </ul>
+            </li>
+            @foreach (var item in Pages)
             {
-                if (item.Url != "index")
-                {
-                    <li><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@item.H1</a></li>
-                }
+                <li><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a></li>
             }
 
         </ul>

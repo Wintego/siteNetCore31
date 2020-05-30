@@ -19,7 +19,7 @@ namespace siteNetCore31.Models.ViewComponents
 
         public Task<IViewComponentResult> InvokeAsync()
         {
-            return Task.FromResult((IViewComponentResult)View("Default", dataManager.Pages.GetPages()));
+            return Task.FromResult((IViewComponentResult)View("Default", dataManager));
         }
     }
 }

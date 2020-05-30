@@ -77,12 +77,27 @@ namespace siteNetCore31.Domain
                 Url = "default",
                 H1 = "По умолчанию"
             });
-            builder.Entity<Entities.Service>().HasData(new Entities.Service
-            {
-                Id = new Guid("666599D8-EAC4-4F43-9F15-B7063C583B76"),
-                Url = "usluga-1",
-                H1 = "Услуга 1"
-            });
+            //builder.Entity<Entities.Service>().HasData(new Entities.Service
+            //{
+            //    Id = new Guid("666599D8-EAC4-4F43-9F15-B7063C583B76"),
+            //    Url = "usluga-1",
+            //    H1 = "Услуга 1"
+            //});
+            //builder.Entity<Entities.Service>(b =>
+            //{
+            //    b.HasData(new Entities.Service
+            //    {
+            //        Id = new Guid("666599D8-EAC4-4F43-9F15-B7063C583B76"),
+            //        Url = "usluga-1",
+            //        H1 = "Услуга 1"
+            //    });
+            //    b.OwnsOne(x => x.Category).HasData(new Entities.Category
+            //    {
+            //        Id = new Guid("309035C6-9489-41CA-A395-717243880814"),
+            //        Url = "default",
+            //        H1 = "По умолчанию",
+            //    });
+            //});
         }
     }
 }

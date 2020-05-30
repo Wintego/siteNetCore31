@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,7 +9,6 @@ namespace siteNetCore31.Domain.Entities
 {
     public class Category : EntityBase
     {
-        [Display(Name = "Услуги")]
-        public virtual IEnumerable<Service> Services { get; set; }
+
     }
 }
