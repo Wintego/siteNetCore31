@@ -1,0 +1,63 @@
+﻿@model IQueryable<Page>
+    <div class="row">
+        <div class="col-3 col-6-medium col-12-small">
+            <section>
+                <span>Информация</span>
+                <ul class="divided">
+                    @foreach (var item in Model)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a></li>
+                    }
+                </ul>
+            </section>
+        </div>
+        <div class="col-8 col-12-medium imp-medium">
+            <section>
+                <span>О компании @Config.CompanyName</span>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Sapien pellentesque habitant morbi tristique senectus.
+                </p>
+                <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="callback" class="button alt icon solid fa-arrow-circle-right">Заказать</a>
+            </section>
+            <section>
+                <span>Свяжитесь с нами</span>
+                <div>
+                    <div class="row">
+                        <div class="col-6 col-12-small">
+                            <dl class="contact">
+                                <dt>Тел</dt>
+                                <dd><a href="tel:@Config.CompanyPhoneShort">@Config.CompanyPhone</a></dd>
+                                <dt>WWW</dt>
+                                <dd><a href="/">@Url.Action("", null, null, "https")</a></dd>
+                                <dt>Email</dt>
+                                <dd><a href="mailto:@Config.CompanyEmail">@Config.CompanyEmail</a></dd>
+                            </dl>
+                        </div>
+                        <div class="col-6 col-12-small">
+                            <dl class="contact">
+                                <dt>Адрес</dt>
+                                <dd>
+                                    Минусинская улица, 16<br />
+                                    Москва, Россия, 129346
+                                </dd>
+                                <dt>График</dt>
+                                <dd>
+                                    пн-пт 9.00 - 18.00<br />
+                                    сб-вс 9.00 - 15.00
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-12">
+            <div id="copyright">
+                <ul class="menu">
+                    <li>&copy; 2014-@DateTime.Now.Year @Config.CompanyName. Все права защищены</li>
+                </ul>
+            </div>
+        </div>
+    </div>

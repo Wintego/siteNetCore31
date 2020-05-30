@@ -1258,9 +1258,17 @@ ol.default {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
   position: relative;
   z-index: 2; }
-  #footer h2 {
+  #footer h2, #footer span {
     font-size: 1.35em;
-    color: #fff; }
+    color: #fff;
+    font-size: 1.35em;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: .04em;
+    margin: 0 0 1.5em 0;
+    line-height: 1em;
+    margin: 0 0 1em 0; }
   #footer strong {
     color: #fff; }
   #footer a {
