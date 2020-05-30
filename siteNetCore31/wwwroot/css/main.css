@@ -721,8 +721,14 @@ header.major {
     display: block;
     border-top: solid 1px #dbdbdb;
     height: 8px; }
-  header.major h1, header.major h2, header.major h3 {
-    margin: 0 0 1.2em 0; }
+  header.major h1, header.major h2, header.major h3, header.major span {
+    margin: 0 0 1.2em 0;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: .04em;
+    color: #404248;
+    margin: 0 0 1em 0;
+    font-size: 1.5em; }
   header.major p {
     margin: 0 0 1.5em 0;
     position: relative;
@@ -995,7 +1001,7 @@ ol.default {
   text-align: center; }
   .box.feature1 header {
     margin-bottom: 3em; }
-    .box.feature1 header.first h1 {
+    .box.feature1 header.first h1, .box.feature1 header.first span {
       font-size: 2.5em; }
     .box.feature1 header.first p {
       font-size: 1.2em; }

@@ -1,36 +1,31 @@
 ﻿@model IQueryable<Service>
 <div class="col-4 col-12-medium">
     <div id="sidebar">
-
-        <!-- Sidebar -->
-
         <section>
             <header class="major">
-                <h2>контакты</h2>
+                <span>Контакты</span>
             </header>
-            <p>@Config.CompanyPhone</p>
+            <header>
+                <span class="date"><b>Телефон:</b> <a href="tel:@Config.CompanyPhoneShort">@Config.CompanyPhone</a></span>
+                <span class="date"><b>Email:</b> <a href="mailto:@Config.CompanyEmail">@Config.CompanyEmail</a></span>
+            </header>
             <footer>
-                <a href="#" class="button icon solid fa-info-circle">Find out more</a>
+                <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="callback" class="button icon solid fa-arrow-circle-right">Заказать эту услугу</a>
             </footer>
         </section>
-
         <section>
             <header class="major">
-                <h2>Наши услуги</h2>
+                <span>Услуги</span>
             </header>
             <ul>
                 @foreach (var item in Model)
                 {
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url"><h4>@item.H1</h4></a>                        
-                        <p>@item.ShortDescription</p>
+                        <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a>                        
                     </li>
                 }
             </ul>
-            <footer>
-                <a href="#" class="button icon solid fa-arrow-circle-right">Do Something</a>
-            </footer>
         </section>
-
     </div>
 </div>
+
