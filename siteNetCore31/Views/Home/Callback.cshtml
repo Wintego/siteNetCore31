@@ -1,0 +1,66 @@
+﻿@model CallbackViewModel
+<div class="callback">
+    <header class="major">
+        <h1>Заказать обратный звонок</h1>
+        <p>Наши специалисты быстро проведут расчет стоимости услуги или подготовят коммерческое предложение для юридических лиц!</p>
+    </header>
+    <form asp-area="" asp-controller="Home" asp-action="Callback" method="post" asp-route-returnUrl="@ViewBag.returnUrl" asp-route-success="@ViewBag.Success">
+        <div>
+            <label asp-for="Phone"></label>            
+            @{
+                if (ViewBag.Message == null)
+                {
+                    <input type="tel" asp-for="Phone" />
+                }
+                else
+                {
+                    <input type="tel" asp-for="Phone" disabled/>
+                }
+            }
+            <span asp-validation-for="Phone"></span>
+        </div>
+        <div>
+            <label asp-for="Name"></label>
+            @{
+                if (ViewBag.Message == null)
+                {
+                    <input asp-for="Name" />
+                }
+                else
+                {
+                    <input asp-for="Name" disabled/>
+                }
+            }
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            @{
+                if (ViewBag.Message == null)
+                {
+                    <input type="submit" value="Отправить" />
+                }
+                else
+                {
+                    <h6 style="color: green">@ViewBag.Message</h6>
+                    <p>Вы будете перенаправлены на предыдущую страницу через 5 секунд</p>
+                }
+            }            
+        </div>
+    </form>    
+</div>
+<script src="~/js/jquery.inputmask.min.js" defer asp-append-version="true"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('#Phone').inputmask("+7(999)999-99-99");
+    });
+</script>
+@{ 
+    if (ViewBag.Message != null)
+    {
+    <script>
+        window.setTimeout(function () {
+                window.location.href = '@ViewBag.returnUrl';
+            }, 7000);
+    </script>
+    }
+}

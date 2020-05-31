@@ -34,6 +34,7 @@ namespace siteNetCore31
 
             //подключаем когфиг из appsettings.json
             Configuration.Bind("Project", new Config());
+            Configuration.Bind("Email", new Email());
 
             //подключаем функционал приложения в качестве сервисов
             services.AddTransient<iPagesRepository, EFPagesRepository>();

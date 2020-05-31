@@ -341,6 +341,7 @@ body {
 		input[type="text"],
 		input[type="email"],
 		input[type="password"],
+		input[type="tel"],
 		select,
 		textarea {
 			-webkit-appearance: none;
@@ -353,6 +354,7 @@ body {
 		input[type="text"]:focus,
 		input[type="email"]:focus,
 		input[type="password"]:focus,
+		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
 			box-shadow: 0 0 2px 1px #4091bf;
@@ -360,7 +362,9 @@ body {
 
 		input[type="text"],
 		input[type="email"],
-		input[type="password"] {
+		input[type="password"],
+		input[type="tel"]
+		{
 			line-height: 3em;
 			padding: 0 1em;
 		}
@@ -1455,4 +1459,8 @@ body {
 	}
 .field-validation-error {
 	color: red;
+}
+.callback {
+	margin: 0 auto;
+	max-width: 420px;
 }
