@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using siteNetCore31.Domain.Entities;
 using siteNetCore31.Domain.Repsitories;
@@ -30,13 +31,13 @@ namespace siteNetCore31.Areas.Admin.Controllers
             return View(entity);
         }
         [HttpPost]
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var thisCategory = dataManager.Categories.GetCategoryById(id);
             //получаем категорию по умолчанию
             var defaultCategory = dataManager.Categories.GetCategoryById(new Guid("309035C6-9489-41CA-A395-717243880814"));
             //получаем все сервисы в IList
-            IList<Domain.Entities.Service> services = dataManager.Services.GetServices().Where(x => x.Category == thisCategory).ToList();
+            IList<Domain.Entities.Service> services = await dataManager.Services.GetServices().Where(x => x.Category == thisCategory).ToListAsync();
             //устанавливаем категорию в данных сервисах по умолчанию и сохраняем в базу
             foreach (var service in services)
             {
