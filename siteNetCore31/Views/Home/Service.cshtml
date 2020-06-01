@@ -9,7 +9,8 @@
     <h1>@Model.H1</h1>
     <p>@Model.ShortDescription</p>
 </header>
-<span class="image featured"><img src="~/images/services/@Model.Image" alt="@Model.H1" /></span>
+@{
+    var image = Model.Image == null ? "noimage.png" : Model.Image;
+}
+<span class="image featured"><img src="~/images/@image" alt="@Model.H1" /></span>
 <p>@Html.Raw(Model.Text)</p>
-
-

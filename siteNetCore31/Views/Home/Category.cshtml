@@ -7,14 +7,15 @@
     <h1>@Model.H1</h1>
 </header>
 <p>@Html.Raw(Model.Text)</p>
-
 @if(services.Any())
 {
-
     @foreach (var item in services)
     {
         <article class="box excerpt">
-            <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="image left"><img src="/images/services/square-@item.Image" alt="@item.H1" /></a>
+            @{
+                var image = Model.Image == null ? "noimage.png" : Model.Image;
+            }
+            <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="image left"><img src="/images/square-@image" alt="@item.H1" /></a>
             <div>
                 <header>
                     <span class="date">@item.DateCreated.ToString("dd MMM")</span>
@@ -26,5 +27,4 @@
             </div>
         </article>
     }
-
 }
