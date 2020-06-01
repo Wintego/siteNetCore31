@@ -14,3 +14,29 @@
 }
 <span class="image featured"><img src="~/images/@image" alt="@Model.H1" /></span>
 <p>@Html.Raw(Model.Text)</p>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Article",
+  "headline": "@Model.H1",
+  "description": "@Model.ShortDescription",
+  "image": "@Url.Action("", null, null, "https")images/services/square-@image",  
+  "author": {
+    "@@type": "Organization",
+    "name": "@Config.CompanyName"
+  },  
+  "publisher": {
+    "@@type": "Organization",
+    "name": "@Config.CompanyName",
+    "logo": {
+      "@@type": "ImageObject",
+      "url": "@Url.Action("", null, null, "https")images/logo.png",
+      "width": 166,
+      "height": 33
+    }
+  },
+  "datePublished": "@Model.DateCreated.ToString("yyy-MM-dd")",
+  "dateModified": "@Model.DateUpdated.ToString("yyy-MM-dd")"
+}
+</script>
