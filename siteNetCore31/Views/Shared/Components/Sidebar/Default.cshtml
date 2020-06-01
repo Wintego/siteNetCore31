@@ -21,7 +21,7 @@
                 @foreach (var item in Model)
                 {
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a>                        
+                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a>                        
                     </li>
                 }
             </ul>
