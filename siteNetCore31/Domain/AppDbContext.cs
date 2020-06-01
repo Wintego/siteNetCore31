@@ -57,17 +57,7 @@ namespace siteNetCore31.Domain
                 UserId = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6"
             });
 
-            //добавляем страницу Услуги
-            builder.Entity<Entities.Page>().HasData(new Entities.Page
-            {
-                Id = new Guid("27C6FDEB-2783-4F3E-83FE-064E0582B175"),
-                Url = "services",
-                H1 = "Услуги",
-                DateCreated = date,
-                DateUpdated = date
-            });
-
-            //добавляем страницу Главная
+            //добавляем главную страницу
             builder.Entity<Entities.Page>().HasData(new Entities.Page
             {
                 Id = new Guid("A241DD18-E497-40BE-8504-4DEAACA2C6CF"),
@@ -75,8 +65,6 @@ namespace siteNetCore31.Domain
                 H1 = "Главная",
                 Text = @"<div class=""wrapper style2"">
 						<div class=""inner"">
-
-							<!-- Feature 2 -->
 								<section class=""container box feature2"">
 									<div class=""row"">
 										<div class=""col-6 col-12-medium"">
@@ -111,7 +99,6 @@ namespace siteNetCore31.Domain
 										</div>
 									</div>
 								</section>
-
 							</div>
 					</div>"
             });
