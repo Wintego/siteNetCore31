@@ -102,9 +102,7 @@ namespace siteNetCore31.Controllers
                     ViewBag.Message = "Запрос НЕ отправлен. Перезвоните по номеру "+ Config.CompanyName;
                 }                
                 ViewBag.returnUrl = returnUrl;
-                return View(model);
-            }
-            
+            }            
             return View(model);
         }
     }
