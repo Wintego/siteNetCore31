@@ -32,7 +32,21 @@ namespace siteNetCore31.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Delete(Guid id)
         {
-            dataManager.Categories.DeleteCategory(id);
+            var thisCategory = dataManager.Categories.GetCategoryById(id);
+            //получаем категорию по умолчанию
+            var defaultCategory = dataManager.Categories.GetCategoryById(new Guid("309035C6-9489-41CA-A395-717243880814"));
+            //получаем все сервисы в IList
+            IList<Domain.Entities.Service> services = dataManager.Services.GetServices().Where(x => x.Category == thisCategory).ToList();
+            //устанавливаем категорию в данных сервисах по умолчанию и сохраняем в базу
+            foreach (var service in services)
+            {
+                service.Category = defaultCategory;
+                dataManager.Services.SaveService(service);
+            }
+            //сохраняем категорию чтобы не отслеживать изменения
+            dataManager.Categories.SaveCategory(thisCategory);
+            //удаляем категорию
+            dataManager.Categories.DeleteCategory(thisCategory);
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
         [HttpPost]

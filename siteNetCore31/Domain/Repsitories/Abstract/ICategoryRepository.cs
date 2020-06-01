@@ -12,6 +12,7 @@ namespace siteNetCore31.Domain.Repsitories.Abstract
         Category GetCategoryById(Guid id);
         Category GetCategoryByUrl(string url);
         void SaveCategory(Category category);
-        void DeleteCategory(Guid id);
+        void DeleteCategoryById(Guid id);
+        void DeleteCategory(Category category);
     }
 }

@@ -19,12 +19,16 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
 
         public IEnumerable<Category> GetCategories() => context.Categories.AsNoTracking();
 
-        public void DeleteCategory(Guid id)
+        public void DeleteCategoryById(Guid id)
         {
             context.Categories.Remove(new Category() { Id = id });
             context.SaveChanges();
         }
-
+        public void DeleteCategory(Category category)
+        {
+            context.Categories.Remove(category);
+            context.SaveChanges();
+        }
         public Category GetCategoryById(Guid id)
         {
             return context.Categories.FirstOrDefault(x => x.Id == id);
