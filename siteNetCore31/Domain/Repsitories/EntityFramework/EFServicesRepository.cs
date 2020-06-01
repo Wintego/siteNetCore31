@@ -54,6 +54,8 @@ namespace siteNetCore31.Domain.Repsitories.EntityFramework
             {
                 //устанавливаем дату создания
                 service.DateCreated = DateTime.UtcNow;
+                //устанавливаем дату изменения
+                service.DateUpdated = service.DateCreated;
                 //помечаем ключем, что это новый объект
                 context.Entry(service).State = EntityState.Added;
             }            

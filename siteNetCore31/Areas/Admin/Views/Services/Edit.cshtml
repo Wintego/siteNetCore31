@@ -6,7 +6,8 @@
 
 <form asp-area="Admin" asp-controller="Services" asp-action="Edit" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="@Model.Id" />
-    <input type="hidden" asp-for="@Model.Image" />
+    <input type="hidden" asp-for="@Model.Image" />    
+    <input type="hidden" asp-for="@Model.DateCreated" />    
     <div>
         <label asp-for="Url"></label>
         <input asp-for="Url" />

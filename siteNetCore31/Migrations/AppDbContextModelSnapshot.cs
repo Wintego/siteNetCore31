@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "00e9ddc1-0300-4886-8ede-bf37c78fa959",
+                            ConcurrencyStamp = "24886876-11c3-4873-8875-6a9cd04ced65",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9173c8b0-84c0-47e0-aced-3225ae98d6ba",
+                            ConcurrencyStamp = "3e475499-7c1d-4f91-a92d-40c5dd2fc1d3",
                             Email = "info@company.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGOrximAbaMWz6Z0t/hgVNZcE8rscvEDwyMFoYQWeukE0NI0mCo62DB4DpqnxzSgXQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENAWqMAsFyxFmrET7K8+K5bzqPNs7yoQFCDvq+r7APXmx/9POxRtjWDbMjO5FK1Rjw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -292,8 +292,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3066),
+                            DateUpdated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3083),
                             H1 = "По умолчанию",
                             Url = "default"
                         });
@@ -345,8 +345,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("27c6fdeb-2783-4f3e-83fe-064e0582b175"),
-                            DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2020, 6, 1, 9, 9, 48, 979, DateTimeKind.Utc).AddTicks(9979),
+                            DateUpdated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(481),
                             H1 = "Услуги",
                             Url = "services"
                         },
@@ -356,6 +356,47 @@ namespace siteNetCore31.Migrations
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "Главная",
+                            Text = @"<div class=""wrapper style2"">
+						<div class=""inner"">
+
+							<!-- Feature 2 -->
+								<section class=""container box feature2"">
+									<div class=""row"">
+										<div class=""col-6 col-12-medium"">
+											<section>
+												<header class=""major"">
+													<h2>And this is a subheading</h2>
+													<p>It’s important but clearly not *that* important</p>
+												</header>
+												<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+												Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+												Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
+												consequat etiam.</p>
+												<footer>
+													<a href=""#"" class=""button medium icon solid fa-arrow-circle-right"">Let's do this</a>
+												</footer>
+											</section>
+										</div>
+										<div class=""col-6 col-12-medium"">
+											<section>
+												<header class=""major"">
+													<h2>This is also a subheading</h2>
+													<p>And is as unimportant as the other one</p>
+												</header>
+												<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+												Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+												Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
+												consequat etiam.</p>
+												<footer>
+													<a href=""#"" class=""button medium alt icon solid fa-info-circle"">Wait, what?</a>
+												</footer>
+											</section>
+										</div>
+									</div>
+								</section>
+
+							</div>
+					</div>",
                             Url = "index"
                         });
                 });
@@ -404,6 +445,17 @@ namespace siteNetCore31.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Services");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("666599d8-eac4-4f43-9f15-b7063c583b76"),
+                            CategoryId = new Guid("309035c6-9489-41ca-a395-717243880814"),
+                            DateCreated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3291),
+                            DateUpdated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3293),
+                            H1 = "Услуга 1",
+                            Url = "usluga-1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
