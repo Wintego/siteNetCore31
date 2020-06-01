@@ -3,28 +3,29 @@
     Layout = "_LayoutNoSidebar";
     var services = ViewBag.Services as IQueryable<Service>;
 }
-<header class="major">
-    <h1>@Model.H1</h1>
-</header>
-<p>@Html.Raw(Model.Text)</p>
-@if(services.Any())
-{
-    @foreach (var item in services)
-    {
-        <article class="box excerpt">
-            @{
-                var image = Model.Image == null ? "noimage.png" : Model.Image;
+    <section class="box article-list">
+        <h2 class="icon fa-file-alt">@Model.H1</h2>
+
+        <p>@Html.Raw(Model.Text)</p>
+        @if (services.Any())
+        {
+            @foreach (var item in services)
+            {
+                <article class="box excerpt">
+                    @{
+                        var image = Model.Image == null ? "noimage.png" : Model.Image;
+                    }
+                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="image left"><img src="/images/square-@image" alt="@item.H1" /></a>
+                    <div>
+                        <header>
+                            <span class="date">@item.DateCreated.ToString("dd MMM")</span>
+                            <h3><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@item.H1</a></h3>
+                        </header>
+                        <p>
+                            @item.ShortDescription
+                        </p>
+                    </div>
+                </article>
             }
-            <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="image left"><img src="/images/square-@image" alt="@item.H1" /></a>
-            <div>
-                <header>
-                    <span class="date">@item.DateCreated.ToString("dd MMM")</span>
-                    <h3><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@item.H1</a></h3>
-                </header>
-                <p>
-                    @item.ShortDescription
-                </p>
-            </div>
-        </article>
-    }
-}
+        }
+    </section>
