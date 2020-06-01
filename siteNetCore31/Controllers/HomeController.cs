@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MimeKit;
@@ -104,6 +106,56 @@ namespace siteNetCore31.Controllers
                 ViewBag.returnUrl = returnUrl;
             }            
             return View(model);
+        }
+
+        [Route("/sitemap.xml")]
+        public void SitemapXml()
+        {
+            var syncIOFeature = HttpContext.Features.Get<IHttpBodyControlFeature>();
+
+            if (syncIOFeature != null)
+                syncIOFeature.AllowSynchronousIO = true;
+
+            string url = Request.Scheme + "://" + Request.Host;
+
+            Response.ContentType = "application/xml";
+
+            using (var xml = XmlWriter.Create(Response.Body, new XmlWriterSettings { Indent = true }))
+            {
+                xml.WriteStartDocument();
+                xml.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
+
+                //выводим главную страницу
+                xml.WriteStartElement("url");
+                xml.WriteElementString("loc", url);
+                xml.WriteEndElement();
+
+                //выводим ссылки на страницы
+                foreach (var item in dataManager.Pages.GetPages().Where(x=>x.Url != "index"))
+                {
+                    xml.WriteStartElement("url");
+                    xml.WriteElementString("loc", $"{Request.Scheme}://{Request.Host}/{item.Url}");
+                    xml.WriteEndElement();
+                }
+                //выводим ссылки на категории
+                foreach (var item in dataManager.Services.GetServices().Select(x => new { category = x.Category.Url }).Distinct())
+                {
+                    url = $"{Request.Scheme}://{Request.Host}/{item.category}";
+                    xml.WriteStartElement("url");
+                    xml.WriteElementString("loc", url);
+                    xml.WriteEndElement();
+                }
+                //выводим ссылки на услуги
+                foreach (var item in dataManager.Services.GetServices())
+                {
+                    url = $"{Request.Scheme}://{Request.Host}/{item.Category.Url}/{item.Url}";
+                    xml.WriteStartElement("url");
+                    xml.WriteElementString("loc", url);
+                    xml.WriteEndElement();
+                }
+
+                xml.WriteEndElement();
+            }
         }
     }
 }
