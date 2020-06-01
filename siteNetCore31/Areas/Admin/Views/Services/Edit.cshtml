@@ -1,6 +1,6 @@
 ﻿@model siteNetCore31.Domain.Entities.Service
 @{
-    ViewBag.Title = Model.H1 != null ? $"{Model.H1} - Редактировать" : "Создать новую услугу";
+    ViewBag.Title = Model.H1 == null ? "Добавить новую услугу" : $"{Model.H1} - Редактировать услугу" ;
 }
 <script src="~/js/ckeditor4/ckeditor.js"></script>
 
