@@ -1,19 +1,32 @@
 ﻿@if (ViewBag.Title != null)
 {
-    <title>@ViewBag.Title</title>
+<title>@ViewBag.Title</title>
+<meta property="og:title" content="@ViewBag.Title" />
 }
 else
 {
-    <title>@Config.CompanyName</title>
-
+<title>@Config.CompanyName</title>
+<meta property="og:title" content="@Config.CompanyName" />
 }
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 @if (ViewBag.Description != null)
 {
-    <meta name="description" content="@ViewBag.Description" />
+<meta name="description" content="@ViewBag.Description" />
+<meta property="og:description" content="@ViewBag.Description" />
 }
 else
 {
-    <meta name="description" content="@Config.CompanyName" />
+<meta name="description" content="@Config.CompanyName" />
+<meta property="og:description" content="@Config.CompanyName" />
 }
+@if (ViewBag.Image != null)
+{
+<meta property="og:image" content="@ViewBag.Image" />
+}
+else
+{
+<meta property="og:image" content="@($"{Context.Request.Scheme}://{Context.Request.Host}/images/square-noimage.png")" />
+}
+<meta property="og:type" content="article" />
+<meta property="og:url" content="@($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}")" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />

@@ -3,6 +3,7 @@
     Layout = "_LayoutLeftSidebar";
     ViewBag.Title = Model.seoTitle;
     ViewBag.Description = Model.seoDescription;
+    ViewBag.Image = Model.Image == null ? $"{Context.Request.Scheme}://{Context.Request.Host}/images/square-noimage.png" : $"{Context.Request.Scheme}://{Context.Request.Host}/images/square-{Model.Image}";
 }
 
 <header class="major">
@@ -21,7 +22,7 @@
   "@@type": "Article",
   "headline": "@Model.H1",
   "description": "@Model.ShortDescription",
-  "image": "@Url.Action("", null, null, "https")images/services/square-@image",  
+  "image": "@ViewBag.Image),
   "author": {
     "@@type": "Organization",
     "name": "@Config.CompanyName"
@@ -31,7 +32,7 @@
     "name": "@Config.CompanyName",
     "logo": {
       "@@type": "ImageObject",
-      "url": "@Url.Action("", null, null, "https")images/logo.png",
+      "url": "@($"{Context.Request.Scheme}://{Context.Request.Host}/images/logo.png")",
       "width": 166,
       "height": 33
     }
