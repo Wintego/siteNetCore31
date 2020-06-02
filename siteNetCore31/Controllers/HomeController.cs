@@ -138,9 +138,9 @@ namespace siteNetCore31.Controllers
                     xml.WriteEndElement();
                 }
                 //выводим ссылки на категории
-                foreach (var item in dataManager.Services.GetServices().Select(x => new { category = x.Category.Url }).Distinct())
+                foreach (var item in dataManager.Categories.GetCategories())
                 {
-                    url = $"{Request.Scheme}://{Request.Host}/{item.category}";
+                    url = $"{Request.Scheme}://{Request.Host}/{item.Url}";
                     xml.WriteStartElement("url");
                     xml.WriteElementString("loc", url);
                     xml.WriteEndElement();
