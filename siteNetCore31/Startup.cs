@@ -43,7 +43,7 @@ namespace siteNetCore31
             services.AddTransient<DataManager>();
             
             //подключаем контекст базы данных
-            services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionStringLocal));
+            services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionString));
 
             //настраиваем систему identity
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -80,9 +80,11 @@ namespace siteNetCore31
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
+            {                
                 app.UseDeveloperExceptionPage();
             }
+            //вывод ошибок
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
 
             //используем статические файлы
             app.UseStaticFiles();
@@ -98,18 +100,11 @@ namespace siteNetCore31
             //задаем маршруты (ендпоинты)
             app.UseEndpoints(endpoints =>
             {
-                //возвращаем картинки
-                endpoints.MapControllerRoute(
-                    name: "images",
-                    pattern: "/images/regex(^\\.[^.]+$)",
-                    defaults: new { controller = "Home", action = "ReturnImage" }
-                    );
-
                 //добавляем путь к зоне администратора
                 endpoints.MapControllerRoute("admin","{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 //путь по умолчанию
-                endpoints.MapControllerRoute("default","{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

@@ -27,11 +27,13 @@ namespace siteNetCore31.Controllers
             this.dataManager = dataManager;
         }
 
+        //вывод главной страницы
         public IActionResult Index()
         {
             var page = dataManager.Pages.GetPageByUrl("index");
             return View(page);
         }
+        //вывод страниц
         [Route("{id}-info", Name = "Info")]
         public IActionResult Info(string id)
         {
@@ -43,29 +45,26 @@ namespace siteNetCore31.Controllers
             var page = dataManager.Pages.GetPageByUrl(id);
             return View(page);
         }
-
+        //вывод услуг
         [Route("{category}/{id}", Name = "Service")]
         public IActionResult Service(string id, string category)
         {
             var service = dataManager.Services.GetServiceByUrl(id);
             if(service is Domain.Entities.Service)
                 return View(service);
-            else return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
+            else return NotFound();
         }
-
+        //вывод категории
         [Route("{id}", Name = "Category")]
         public IActionResult Category(string id)
         {
             var category = dataManager.Categories.GetCategoryByUrl(id);
-            ViewBag.Services = dataManager.Services.GetServices().Where(x => x.Category == category);
+            if (category != null)
+                ViewBag.Services = dataManager.Services.GetServices().Where(x => x.Category == category);
+            else return NotFound();
             return View(category);
         }
-
-        public IActionResult ReturnImage(string file)
-        {
-            return File($"~/images/{file}", "image");
-        }
-
+        //принимаем данные формы заказа звонка
         [HttpPost]
         public IActionResult Callback(CallbackViewModel model, string returnUrl)
         {
@@ -108,6 +107,7 @@ namespace siteNetCore31.Controllers
             return View(model);
         }
 
+        //генерация sitemap.xml
         [Route("/sitemap.xml")]
         public void SitemapXml()
         {
@@ -156,6 +156,13 @@ namespace siteNetCore31.Controllers
 
                 xml.WriteEndElement();
             }
+        }
+        //показ ошибок
+        [Route("/error/{code:int}")]
+        public IActionResult Error(int code)
+        {
+            ViewBag.StatusCode = code;
+            return View();
         }
     }
 }
