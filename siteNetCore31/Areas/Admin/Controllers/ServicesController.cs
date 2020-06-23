@@ -73,10 +73,10 @@ namespace siteNetCore31.Areas.Admin.Controllers
                     //сохраняем картинку
                     using (var img = System.Drawing.Image.FromStream(Image.OpenReadStream(), true, true))
                     {
-                        //создаём измененную картинку с шириной 783 пикселя
-                        var i = new Bitmap(img.ScaleAndCrop(783, 294, TargetSpot.BottomMiddle));
+                        //создаём измененную картинку с шириной 815 пикселя
+                        var i = new Bitmap(img.ScaleAndCrop(815, 400, TargetSpot.BottomMiddle));
                         //создаём квадратную картинку для превью услуг
-                        var square = new Bitmap(img.ScaleAndCrop(180, 167, TargetSpot.MiddleLeft));
+                        var square = new Bitmap(img.ScaleAndCrop(525, 350, TargetSpot.MiddleLeft));
                         //создаём квадратную картинку для превью в админке
                         var mini = new Bitmap(img.ScaleAndCrop(78, 35, TargetSpot.Center));
                         //сохраняем картинки

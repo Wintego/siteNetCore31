@@ -4,29 +4,63 @@
     var Services = Model.Services.GetServices().Where(x=>x.Category != null);
     var Categories = Model.Categories.GetCategories().Where(x => x.Id != new Guid("309035C6-9489-41CA-A395-717243880814"));
 }
-    <nav id="nav">
-        <ul>
-            <li>
-                <a>Наши услуги</a>
+    <div id="mainMenu" class="menu-sub-title">
+        <div class="container">
+            <nav>
                 <ul>
-                    @foreach (var category in Categories)
-                    {
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@category.Url">@category.H1</a>
-                        <ul>
-                            @foreach (var service in Services.Where(x => x.Category == category))
-                            {
-                                <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.H1</a></li>
-                            }
+                    <li><a href="/">Главная</a></li>
+                    <li class="dropdown mega-menu-item">
+                        <span class="dropdown-arrow"></span> <a href="#">Услуги<span class="menu-sub-title">Sub title</span></a>
+                        <ul class="dropdown-menu" style="">
+                            <li class="mega-menu-content">
+                                <div class="row">
+                                    @foreach (var category in Categories)
+                                    {
+                                        <div class="col-lg-2-5">
+                                            <ul>
+                                                <li class="mega-menu-title">@category.H1</li>
+                                                @foreach (var service in Services.Where(x => x.Category == category))
+                                                {
+                                                    <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.H1</a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+                                    <div class="col-md-12 no-padding">
+                                        <div class="d-none d-lg-block m-t-40 m-b-10">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-9 m-t-10">
+                                                        <div class="text-center center">
+                                                            <div class="heading-creative">
+                                                                <strong>20%</strong> Skidka Hover
+                                                                Styles
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <a href="portfolio-hover-styles.html" class="btn m-l-20 btn-light btn-shadow btn-light-hover btn-light-hover">
+                                                            View
+                                                            All Hover Styles
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="d-block d-lg-none">
+                                            <li>
+                                                <a class="mega-menu-title" href="portfolio-hover-styles.html">
+                                                    20+ Amazing Hover
+                                                    Styles
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
-                    </li>                        
-                    }
+                    </li>
                 </ul>
-            </li>
-            @foreach (var item in Pages)
-            {
-                <li><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a></li>
-            }
-
-        </ul>
-    </nav>
+            </nav>
+        </div>
+    </div>

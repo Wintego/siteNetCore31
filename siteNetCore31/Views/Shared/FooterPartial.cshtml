@@ -1,7 +1,10 @@
-﻿<div id="footer-wrapper">
-    <footer id="footer" class="container">
-        <cache>
-            @(await Component.InvokeAsync<FooterViewComponent>())
-        </cache>
-    </footer>
-</div>
+﻿<footer id="footer">
+    <cache>
+        @(await Component.InvokeAsync<FooterViewComponent>())
+    </cache>
+    <div class="copyright-content">
+        <div class="container">
+            <div class="copyright-text text-center">&copy; @DateTime.Now.Year @Config.CompanyName - Все права защищены.</div>
+        </div>
+    </div>
+</footer>

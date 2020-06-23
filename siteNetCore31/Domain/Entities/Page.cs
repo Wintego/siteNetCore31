@@ -10,7 +10,7 @@ namespace siteNetCore31.Domain.Entities
     {
         [Required]
         [Display(Name = "Название страницы (h1)")]
-        public override string H1 { get; set; } = "Акции, контакты, о компании и тд";
+        public override string H1 { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage ="Введите адрес страницы!")]
         [Display(Name = "URL страницы")]

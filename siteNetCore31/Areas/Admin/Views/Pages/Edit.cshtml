@@ -1,40 +1,55 @@
 ﻿@model siteNetCore31.Domain.Entities.Page
 @{
-    ViewBag.Title = Model.H1 == null ? "Добавить новую страницу" : $"{Model.H1} - Редактировать страницу";
+    Layout = "_LayoutWhite";
+    ViewBag.Title = Model.H1 == null ? "Добавить новую страницу" : "Редактировать страницу";
 }
     <script src="~/js/ckeditor4/ckeditor.js"></script>
-
-<form asp-area="Admin" asp-controller="Pages" asp-action="Edit" method="post" enctype="multipart/form-data">
-    <input type="hidden" asp-for="@Model.Id" />
-    <div>
-        <label asp-for="H1"></label>
-        <input asp-for="H1" />
-        <span asp-validation-for="H1"></span>
-    </div>
-    <div>
-        <label asp-for="Url"></label>
-        <input asp-for="Url" />
-        <span asp-validation-for="Url"></span>
-    </div>
-    <div>
-        <label asp-for="Text"></label>
-        <textarea asp-for="Text"></textarea>
-        <span asp-validation-for="Text"></span>
-    </div>
-    <hr />
-    <div>
-        <label asp-for="seoTitle"></label>
-        <input asp-for="seoTitle" />
-        <span asp-validation-for="seoTitle"></span>
-    </div>
-    <div>
-        <label asp-for="seoDescription"></label>
-        <input asp-for="seoDescription"></input>
-        <span asp-validation-for="seoDescription"></span>
-    </div>
-    <input style="margin-top: 1em" type="submit" class="button" value="Сохранить" />
-</form>
-
-<script>
+    <section id="page-content">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">@(String.IsNullOrEmpty(Model.H1)? "Новая" : Model.H1)</h5>
+                    <h6 class="card-subtitle text-muted">@ViewBag.Title</h6>
+                </div>
+                <div class="card-body">
+                    <form asp-area="Admin" asp-controller="Pages" asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">@($"{Context.Request.Scheme}://{Context.Request.Host}/")</span>
+                            </div>
+                            <input asp-for="Url" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">-info</span>
+                            </div>
+                            <span asp-validation-for="Url"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="H1"></label>
+                            <input asp-for="H1" class="form-control" />
+                            <span asp-validation-for="H1"></span>
+                        </div>                        
+                        <div class="form-group">
+                            <label asp-for="Text"></label>
+                            <textarea asp-for="Text"></textarea>
+                            <span asp-validation-for="Text"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="seoTitle"></label>
+                            <input asp-for="seoTitle" class="form-control" />
+                            <span asp-validation-for="seoTitle"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="seoDescription"></label>
+                            <input asp-for="seoDescription" class="form-control" />
+                            <span asp-validation-for="seoDescription"></span>
+                        </div>
+                        <button type="submit" class="btn btn-sm">Сохранить</button>
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index"><button type="button" class="btn btn-secondary btn-sm">Отмена</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
     CKEDITOR.replace('@Html.IdFor(x=>x.Text)');
-</script>
+    </script>

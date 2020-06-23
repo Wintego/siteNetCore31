@@ -2,12 +2,18 @@
   {
     "outputFileName": "wwwroot/js/bundle.js",
     "inputFiles": [
-      "wwwroot/js/jquery.min.js",
-      "wwwroot/js/jquery.dropotron.min.js",
-      "wwwroot/js/browser.min.js",
-      "wwwroot/js/breakpoints.min.js",
-      "wwwroot/js/util.js",
-      "wwwroot/js/main.js"
+      "wwwroot/js/jquery.js",
+      "wwwroot/js/popper.min.js",
+      "wwwroot/js/plugins.js",
+      "wwwroot/js/functions.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/plugins.css",
+      "wwwroot/css/style.css",
+      "wwwroot/css/fonts.css"
     ]
   }
 ]

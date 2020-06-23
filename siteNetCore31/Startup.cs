@@ -43,7 +43,7 @@ namespace siteNetCore31
             services.AddTransient<DataManager>();
             
             //подключаем контекст базы данных
-            services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionString));
+            services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConnectionStringLocal));
 
             //настраиваем систему identity
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
