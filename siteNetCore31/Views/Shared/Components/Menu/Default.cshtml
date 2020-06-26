@@ -1,27 +1,31 @@
 ﻿@model siteNetCore31.Domain.Repsitories.DataManager
 @{ 
-    var Pages = Model.Pages.GetPages().Where(x => x.Url != "index");
-    var Services = Model.Services.GetServices().Where(x=>x.Category != null);
-    var Categories = Model.Categories.GetCategories().Where(x => x.Id != new Guid("309035C6-9489-41CA-A395-717243880814"));
+    var Pages = Model.Pages.GetPages().Where(x => x.Id != new Guid("A241DD18-E497-40BE-8504-4DEAACA2C6CF"));
+    var Services = Model.Services.GetServices().Where(x=>x.Category != null).Where(x => x.MenuName != null);
+    var Categories = Model.Categories.GetCategories().Where(x => x.Id != new Guid("309035C6-9489-41CA-A395-717243880814")).Where(x => x.MenuName != null);
 }
     <div id="mainMenu" class="menu-sub-title">
         <div class="container">
             <nav>
                 <ul>
                     <li><a href="/">Главная</a></li>
+                    @foreach (var item in Pages)
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url">@item.H1</a></li>
+                    }
                     <li class="dropdown mega-menu-item">
-                        <span class="dropdown-arrow"></span> <a href="#">Услуги<span class="menu-sub-title">Sub title</span></a>
-                        <ul class="dropdown-menu" style="">
+                        <span class="dropdown-arrow"></span><a href="#">Услуги</a>
+                        <ul class="dropdown-menu">
                             <li class="mega-menu-content">
                                 <div class="row">
                                     @foreach (var category in Categories)
                                     {
                                         <div class="col-lg-2-5">
                                             <ul>
-                                                <li class="mega-menu-title">@category.H1</li>
+                                                <li class="mega-menu-title">@category.MenuName</li>
                                                 @foreach (var service in Services.Where(x => x.Category == category))
                                                 {
-                                                    <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.H1</a></li>
+                                                    <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.MenuName</a></li>
                                                 }
                                             </ul>
                                         </div>
@@ -33,15 +37,13 @@
                                                     <div class="col-lg-9 m-t-10">
                                                         <div class="text-center center">
                                                             <div class="heading-creative">
-                                                                <strong>20%</strong> Skidka Hover
-                                                                Styles
+                                                                Скидка <strong>10%</strong> на любую услугу закончится через <span class="timer"></span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3">
-                                                        <a href="portfolio-hover-styles.html" class="btn m-l-20 btn-light btn-shadow btn-light-hover btn-light-hover">
-                                                            View
-                                                            All Hover Styles
+                                                        <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="callback" class="btn m-l-20 btn-light btn-shadow btn-light-hover btn-light-hover">
+                                                            Сохранить скидку
                                                         </a>
                                                     </div>
                                                 </div>
@@ -49,9 +51,8 @@
                                         </div>
                                         <ul class="d-block d-lg-none">
                                             <li>
-                                                <a class="mega-menu-title" href="portfolio-hover-styles.html">
-                                                    20+ Amazing Hover
-                                                    Styles
+                                                <a class="mega-menu-title" asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="callback">
+                                                    Скидка <strong>10%</strong> на любую услугу закончится через <span class="timer"></span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -64,3 +65,13 @@
             </nav>
         </div>
     </div>
+    <script type="text/javascript">
+        window.onload = (event) => {
+            $(".timer")
+                .countdown("@DateTime.Now.ToString("yyyy/MM/dd 20:00:00", System.Globalization.CultureInfo.InvariantCulture)", function (event) {
+                    $(this).text(
+                        event.strftime('%H:%M:%S')
+                    );
+                });
+        };
+    </script>

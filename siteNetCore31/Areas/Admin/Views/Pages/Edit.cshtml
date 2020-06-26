@@ -13,6 +13,7 @@
                 </div>
                 <div class="card-body">
                     <form asp-area="Admin" asp-controller="Pages" asp-action="Edit" method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="@Model.Image" />
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">@($"{Context.Request.Scheme}://{Context.Request.Host}/")</span>
@@ -27,11 +28,17 @@
                             <label asp-for="H1"></label>
                             <input asp-for="H1" class="form-control" />
                             <span asp-validation-for="H1"></span>
-                        </div>                        
+                        </div>
                         <div class="form-group">
                             <label asp-for="Text"></label>
                             <textarea asp-for="Text"></textarea>
                             <span asp-validation-for="Text"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Image"></label>
+                            <input type="file" asp-for="Image" name="Image" />
+                            <span asp-validation-for="Image"></span>
+                            <span class="form-control-file"><img width="100%" src="@(String.IsNullOrEmpty(@Model.Image) ? "/images/big-noimage.jpg" : $"/images/pages/{@Model.Image}")"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="seoTitle"></label>

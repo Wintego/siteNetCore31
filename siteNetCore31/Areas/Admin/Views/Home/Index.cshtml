@@ -6,7 +6,7 @@
     var Categories = Model.Categories.GetCategories();
 }
 
-<section id="page-title" data-bg-parallax="/images/parallax/5.jpg">
+<section id="page-title" data-bg-parallax="/images/admin.jpg">
     <div class="container">
         <div class="page-title">
             <h1>Панель администратора</h1>
@@ -26,23 +26,23 @@
             {
                 <div class="row">
                     <div class="col-lg-3"><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-Id="@item.Url"><b class="text-uppercase">@item.H1</b></a></div>
-                <div class="col-lg-3"></div>
-                <div class="col-lg-3">
-                    <a class="btn" asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-cog"></i> Редактировать</a>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3">
+                        <a class="btn" asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-cog"></i> Редактировать</a>
+                    </div>
+                    <div class="col-lg-3">
+                        @if (item.Url != "index")
+                        {
+                            <form id="form-@item.Id" asp-area="Admin" asp-controller="Pages" asp-action="Delete" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <a data-toggle="tooltip" data-placement="right" title="" data-original-title="Данное действие отменить нельзя!" class="btn btn-outline" href="#" onclick="document.getElementById('form-@item.Id').submit();">
+                                    <i class="fa fa-trash"></i><an>
+                                    </an>
+                                </a>
+                            </form>
+                        }
+                    </div>
                 </div>
-                <div class="col-lg-3">
-                    @if (item.Url != "index")
-                    {
-                    <form id="form-@item.Id" asp-area="Admin" asp-controller="Pages" asp-action="Delete" method="post">
-                        <input type="hidden" name="id" value="@item.Id" />
-                        <a data-toggle="tooltip" data-placement="right" title="" data-original-title="Данное действие отменить нельзя!" class="btn btn-outline" href="#" onclick="document.getElementById('form-@item.Id').submit();">
-                            <i class="fa fa-trash"></i><an>
-                            </an>
-                        </a>
-                    </form>
-                    }
-                </div>
-                </div>                
             }
         }
     </div>
@@ -111,4 +111,4 @@
         }
     </div>
 </section>
-<script src="/plugins/popper/popper.min.js"></script>
+<script src="~/js/popper.min.js" asp-append-version="true"></script>

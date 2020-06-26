@@ -1,15 +1,15 @@
 [
   {
-    "outputFileName": "wwwroot/js/bundle.js",
+    "outputFileName": "wwwroot/content/bundle.js",
     "inputFiles": [
       "wwwroot/js/jquery.js",
-      "wwwroot/js/popper.min.js",
+      "wwwroot/js/popper.js",
       "wwwroot/js/plugins.js",
       "wwwroot/js/functions.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/css/bundle.css",
+    "outputFileName": "wwwroot/content/bundle.css",
     "inputFiles": [
       "wwwroot/css/plugins.css",
       "wwwroot/css/style.css",

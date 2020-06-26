@@ -1,8 +1,8 @@
 ﻿@model siteNetCore31.Domain.Repsitories.DataManager
 @{ 
     var Pages = Model.Pages.GetPages();
-    var Services = Model.Services.GetServices();
-    var Categories = Model.Categories.GetCategories();
+    var Services = Model.Services.GetServices().Where(x => x.MenuName != null);
+    var Categories = Model.Categories.GetCategories().Where(x=>x.Id != new Guid("309035C6-9489-41CA-A395-717243880814")).Where(x=>x.MenuName != null);
 }
     <div class="footer-content">
         <div class="container">
@@ -11,7 +11,7 @@
                     <div class="widget">
                         <div class="widget-title">О Компании</div>
                         <p class="mb-5">Описание компании</p>
-                        <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923" class="btn btn-inverted" target="_blank">Консультация</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="callback" class="btn btn-inverted" target="_blank">Консультация</a>
                     </div>
                 </div>
                 <div class="col-lg-7">

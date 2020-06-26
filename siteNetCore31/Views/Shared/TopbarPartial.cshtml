@@ -7,10 +7,14 @@
             </ul>
         </div>
         <div class="col-md-6 d-none d-sm-block">
-                <ul class="top-menu float-right">
-                    <li><p>Адрес: Москва, Осташковская улица, 14к1с1</p></li>
-                    <li><p>График: Пн-Вс 8.00 - 20.00</p></li>
-                </ul>
+            <ul class="top-menu float-right">
+                <li><p>Адрес: Москва, Осташковская улица, 14к1с1</p></li>
+                <li><p>График: Пн-Вс 8.00 - 20.00</p></li>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Админка</a></li>
+                }
+            </ul>
         </div>
     </div>
 </div>

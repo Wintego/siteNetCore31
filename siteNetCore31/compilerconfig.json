@@ -1,10 +1,6 @@
 ﻿[
   {
-    "outputFile": "wwwroot/css/main.css",
-    "inputFile": "wwwroot/sass/main.scss"
-  },
-  {
-    "outputFile": "wwwroot/scss/base/_topbar.css",
-    "inputFile": "wwwroot/scss/base/_topbar.scss"
+    "outputFile": "wwwroot/css/style.css",
+    "inputFile": "wwwroot/scss/style.scss"
   }
 ]

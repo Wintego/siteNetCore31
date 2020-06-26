@@ -1,16 +1,16 @@
 ﻿@model IQueryable<Service>
 <div class="sidebar sticky-sidebar col-lg-3">
     <div class="widget">
-        <h4 class="widget-title">Recent Posts</h4>
+        <h4 class="widget-title">Новые услуги</h4>
         <div class="post-thumbnail-list">
             @foreach (var item in Model)
             {
                 <div class="post-thumbnail-entry">
                     <img alt="" src="~/images/services/square-@item.Image">
                     <div class="post-thumbnail-content">
-                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@(String.IsNullOrEmpty(@item.MenuName) ? @item.H1 : @item.MenuName)</a>
                         <span class="post-date"><i class="icon-clock"></i>@item.DateUpdated.ToString("dd.MM")</span>
-                        <span class="post-category"><i class="fa fa-tag"></i> @item.Category.H1</span>
+                        <span class="post-category"><i class="fa fa-tag"></i>@(String.IsNullOrEmpty(@item.Category.MenuName) ? @item.Category.H1 : @item.Category.MenuName)</span>
                     </div>
                 </div>
             }

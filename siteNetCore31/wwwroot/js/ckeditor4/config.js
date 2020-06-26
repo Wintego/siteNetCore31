@@ -10,7 +10,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		{ name: 'styles', groups: ['format' ] },
-		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'document', groups: ['source', 'mode', 'document' ] },
 		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
@@ -27,13 +27,22 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserBrowseUrl = '';
 	config.filebrowserImageUploadUrl = '/Admin/Home/CKEdit4Upload';
 
+	// разрешаем код в переменных
+	config.allowedContent = true;
+	config.ignoreEmptyParagraph = false;
+	config.basicEntities = false;
+
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
-	config.removeButtons = 'Source,Save,Templates,Cut,Undo,Find,SelectAll,About,TextColor,NewPage,Preview,Print,Copy,Redo,Replace,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,Outdent,Indent,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Anchor,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,BGColor,Font,FontSize,Styles';
+	config.removeButtons = 'doctools,Save,Templates,Cut,Undo,Find,SelectAll,About,TextColor,NewPage,Preview,Print,Copy,Redo,Replace,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,Outdent,Indent,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Anchor,Flash,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,BGColor,Font,FontSize,Styles';
 
 	// Set the most common block elements.
 	config.format_tags = 'p;h2;h3';
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+	//запрещаем автоудаление данных тегов
+	CKEDITOR.dtd.$removeEmpty['i'] = false;
+	CKEDITOR.dtd.$removeEmpty['span'] = false;
 };

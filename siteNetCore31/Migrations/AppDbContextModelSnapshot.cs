@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "24886876-11c3-4873-8875-6a9cd04ced65",
+                            ConcurrencyStamp = "847cc946-b1a9-4f4a-bd3b-bd36f3e6f971",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3e475499-7c1d-4f91-a92d-40c5dd2fc1d3",
+                            ConcurrencyStamp = "04095d92-7e3a-4461-aeed-85b1fe5a4ca7",
                             Email = "info@company.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAENAWqMAsFyxFmrET7K8+K5bzqPNs7yoQFCDvq+r7APXmx/9POxRtjWDbMjO5FK1Rjw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELBOaVaRBdHFybgdjJaVd5Jm8CRa8qG17zl7pnCLiNOhd9ymCQCuKfxm5U8yNUBpZQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -292,8 +292,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3066),
-                            DateUpdated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3083),
+                            DateCreated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
+                            DateUpdated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
                             H1 = "По умолчанию",
                             Url = "default"
                         });
@@ -344,22 +344,12 @@ namespace siteNetCore31.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("27c6fdeb-2783-4f3e-83fe-064e0582b175"),
-                            DateCreated = new DateTime(2020, 6, 1, 9, 9, 48, 979, DateTimeKind.Utc).AddTicks(9979),
-                            DateUpdated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(481),
-                            H1 = "Услуги",
-                            Url = "services"
-                        },
-                        new
-                        {
                             Id = new Guid("a241dd18-e497-40be-8504-4deaaca2c6cf"),
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "Главная",
                             Text = @"<div class=""wrapper style2"">
 						<div class=""inner"">
-
-							<!-- Feature 2 -->
 								<section class=""container box feature2"">
 									<div class=""row"">
 										<div class=""col-6 col-12-medium"">
@@ -394,7 +384,6 @@ namespace siteNetCore31.Migrations
 										</div>
 									</div>
 								</section>
-
 							</div>
 					</div>",
                             Url = "index"
@@ -451,8 +440,8 @@ namespace siteNetCore31.Migrations
                         {
                             Id = new Guid("666599d8-eac4-4f43-9f15-b7063c583b76"),
                             CategoryId = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3291),
-                            DateUpdated = new DateTime(2020, 6, 1, 9, 9, 48, 980, DateTimeKind.Utc).AddTicks(3293),
+                            DateCreated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
+                            DateUpdated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
                             H1 = "Услуга 1",
                             Url = "usluga-1"
                         });

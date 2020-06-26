@@ -33,6 +33,7 @@ Topbar
                 font-weight: 500;
                 height: 40px;
                 margin-right: 16px;
+                line-height: 40px;
             }
         }
     }
@@ -68,6 +69,7 @@ Topbar
         background-color: $dark;
 
         .top-menu > li > a,
+        .top-menu > li > p,
         .social-icons li a {
             color: $color-white !important;
         }
