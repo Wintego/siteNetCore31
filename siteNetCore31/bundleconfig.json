@@ -3,7 +3,6 @@
     "outputFileName": "wwwroot/content/bundle.js",
     "inputFiles": [
       "wwwroot/js/jquery.js",
-      "wwwroot/js/popper.js",
       "wwwroot/js/plugins.js",
       "wwwroot/js/functions.js"
     ]
