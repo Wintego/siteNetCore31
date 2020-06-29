@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "847cc946-b1a9-4f4a-bd3b-bd36f3e6f971",
+                            ConcurrencyStamp = "a9050dfd-0fb6-44c4-ba53-4e2bc4815400",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "04095d92-7e3a-4461-aeed-85b1fe5a4ca7",
+                            ConcurrencyStamp = "52dfc64c-0b1b-45b4-8ec8-8040c0c0a14a",
                             Email = "info@company.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAELBOaVaRBdHFybgdjJaVd5Jm8CRa8qG17zl7pnCLiNOhd9ymCQCuKfxm5U8yNUBpZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDlGHKnXatyWGkfpgHAssO4RvCKgul79zAu03Md7IaNdD528ieO/HaQzxYMaW2i8kQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -292,8 +292,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
-                            DateUpdated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
+                            DateCreated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
+                            DateUpdated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
                             H1 = "По умолчанию",
                             Url = "default"
                         });
@@ -348,44 +348,360 @@ namespace siteNetCore31.Migrations
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateUpdated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             H1 = "Главная",
-                            Text = @"<div class=""wrapper style2"">
-						<div class=""inner"">
-								<section class=""container box feature2"">
-									<div class=""row"">
-										<div class=""col-6 col-12-medium"">
-											<section>
-												<header class=""major"">
-													<h2>And this is a subheading</h2>
-													<p>It’s important but clearly not *that* important</p>
-												</header>
-												<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-												Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-												Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-												consequat etiam.</p>
-												<footer>
-													<a href=""#"" class=""button medium icon solid fa-arrow-circle-right"">Let's do this</a>
-												</footer>
-											</section>
-										</div>
-										<div class=""col-6 col-12-medium"">
-											<section>
-												<header class=""major"">
-													<h2>This is also a subheading</h2>
-													<p>And is as unimportant as the other one</p>
-												</header>
-												<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-												Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-												Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-												consequat etiam.</p>
-												<footer>
-													<a href=""#"" class=""button medium alt icon solid fa-info-circle"">Wait, what?</a>
-												</footer>
-											</section>
-										</div>
-									</div>
-								</section>
-							</div>
-					</div>",
+                            Text = @"<div id=""slider"" class=""inspiro-slider slider-fullscreen dots-creative"" data-fade=""true"">
+            <div class=""slide"" data-bg-video=""video/ses.mp4"">
+                <div class=""bg-overlay""></div>
+                <div class=""container"">
+                    <div class=""slide-captions text-left text-light"">
+                        <h1>Санэпидемстанция №1 по Москве и области</h1>
+                        <p class=""text-small"">Официальная СЭС предоставляет населению услуги по уничтожению насекомых, грызунов, оформлению санитарной документации для открытия бизнеса, а так же производит лабораторный анализ воды, воздуха, почвы и продуктов питания.</p>
+                        <div><a href=""#welcome"" class=""btn scroll-to"">Подробнее</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <section id=""welcome"" class=""p-b-0"">
+                <div class=""container"">
+                    <div class=""heading-text heading-section text-center m-b-40"" data-animate=""fadeInUp"">
+                        <h2>О САНЭПИДЕМСТАНЦИИ</h2>
+                        <span class=""lead"">Create amam ipsum dolor sit amet, Beautiful nature, and rare feathers!.</span>
+                    </div>
+                    <div class=""row"" data-animate=""fadeInUp"">
+                        <div class=""col-lg-12"">
+                            <img class=""img-fluid"" src=""/images/other/main.png"" alt=""@Config.CompanyName"">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class=""background-grey"">
+                <div class=""container"">
+                    <div class=""heading-text heading-section"">
+                        <h2>НАШИ ПРЕИМУЩЕСТВА</h2>
+                        <span class=""lead"">Create amam ipsum dolor sit amet, Beautiful nature, and rare feathers!.</span>
+                    </div>
+                    <div class=""row"">
+                        <div class=""col-lg-4"">
+                            <div data-animate=""fadeInUp"" data-animate-delay=""0"">
+                                <h4>Премиум препараты</h4>
+                                <p>Использование исключительно сертифицированных, отличающихся высоким уровнем безопасности для человека и животных химических препаратов.</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"">
+                            <div data-animate=""fadeInUp"" data-animate-delay=""200"">
+                                <h4>Индивидуальный подход</h4>
+                                <p>Мы всегда проводим предварительную оценку ситуации до того, как начать обработку, предлагаем возможности для выбора препаратов, применяемых при химической дезинсекции или дезинфекции.</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"">
+                            <div data-animate=""fadeInUp"" data-animate-delay=""400"">
+                                <h4>Эксперты высшего класса</h4>
+                                <p>Мы не нанимаем случайных людей. Каждый сотрудник - настоящий профессионал в своей области, делающий работу добросовестно и качественно.</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"">
+                            <div data-animate=""fadeInUp"" data-animate-delay=""600"">
+                                <h4>Гарантия</h4>
+                                <p>На все услуги предоставляется гарантия</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"">
+                            <div data-animate=""fadeInUp"" data-animate-delay=""800"">
+                                <h4>Цены</h4>
+                                <p>Вы можете уточнить наличие действующих скидок и акций у специалиста при заказе услуги по телефону.</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"">
+                            <div data-animate=""fadeInUp"" data-animate-delay=""1000"">
+                                <h4>Режим работы</h4>
+                                <p>Если вы можете принять специалистов только в вечернее время или рано утром - это обязательно будет учтено нашими специалистами.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class=""container"">
+                    <div class=""heading-text heading-section text-center"">
+                        <h2>Наши услуги</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consecte adipiscing elit. Suspendisse condimentum porttitor cursumus.
+                        </p>
+                    </div>
+                    <div class=""row"">
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""0"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-squirrel""></i>
+                                </div>
+                                <h3>Дератизация</h3>
+                                <p>
+                                    Борьба с грызунами в городе и на дачных участках по-прежнему весьма актуальна
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""200"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-bug""></i>
+                                </div>
+                                <h3>Дезинсекция</h3>
+                                <p>
+                                    Уничтожение клопов, тараканов и других насекомых в квартире и на участке
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""400"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-viruses""></i>
+                                </div>
+                                <h3>Дезинфекция</h3>
+                                <p>
+                                    Патогенные возбудители представляют серьезную опасность и для предприятий общепита, и для обычных людей
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""600"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""far fa-smoking""></i>
+                                </div>
+                                <h3>Дезодорация</h3>
+                                <p>
+                                    Уничтожение неприятных запахов в квартире и автомобиле
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""800"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-pallet-alt""></i>
+                                </div>
+                                <h3>Фумигация</h3>
+                                <p>
+                                    Подготовка тары к перевозке грузов входит в перечень требований, обязательных для международных перевозок
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""1000"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-flask""></i>
+                                </div>
+                                <h3>Лабораторные анализы</h3>
+                                <p>
+                                    Проведение анализов позволяет обеспечить максимальную точность исследования
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""1200"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-file-certificate""></i>
+                                </div>
+                                <h3>Документация</h3>
+                                <p>
+                                    Оформление, а также разработка санитарной документации для предприятий и организаций
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""1400"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-toilet""></i>
+                                </div>
+                                <h3>Канализация</h3>
+                                <p>
+                                    Чистка труб канализации, устранение засоров
+                                </p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-4"" data-animate=""fadeInUp"" data-animate-delay=""1600"">
+                            <div class=""icon-box effect medium border small"">
+                                <div class=""icon"">
+                                    <i class=""fa fa-wind""></i>
+                                </div>
+                                <h3>Вентиляция</h3>
+                                <p>
+                                    Очистка вентиляционных систем, воздуховодов, дымоходов
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class=""text-light p-t-150 p-b-150 "" data-bg-parallax=""images/parallax/12.jpg"">
+                <div class=""bg-overlay""></div>
+                <div class=""container"">
+                    <div class=""row"">
+                        <div class=""col-lg-3"">
+                            <div class=""text-center"">
+                                <div class=""icon""><i class=""fa fa-3x fa-city""></i></div>
+                                <div class=""counter""> <span data-speed=""3000"" data-refresh-interval=""50"" data-to=""124162"" data-from=""600"" data-seperator=""true""></span> </div>
+                                <div class=""seperator seperator-small""></div>
+                                <p>КВАРТИР</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-3"">
+                            <div class=""text-center"">
+                                <div class=""icon""><i class=""fa fa-3x fa-industry""></i></div>
+                                <div class=""counter""> <span data-speed=""4500"" data-refresh-interval=""23"" data-to=""1365"" data-from=""100"" data-seperator=""true""></span> </div>
+                                <div class=""seperator seperator-small""></div>
+                                <p>ПРЕДПРИЯТИЙ</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-3"">
+                            <div class=""text-center"">
+                                <div class=""icon""><i class=""fa fa-3x fa-bug""></i></div>
+                                <div class=""counter""> <span data-speed=""3000"" data-refresh-interval=""12"" data-to=""23021841"" data-from=""50"" data-seperator=""true""></span> </div>
+                                <div class=""seperator seperator-small""></div>
+                                <p>НАСЕКОМЫХ УНИЧТОЖЕНО</p>
+                            </div>
+                        </div>
+                        <div class=""col-lg-3"">
+                            <div class=""text-center"">
+                                <div class=""icon""><i class=""fa fa-3x fa-vial""></i></div>
+                                <div class=""counter""> <span data-speed=""4550"" data-refresh-interval=""50"" data-to=""14825"" data-from=""48"" data-seperator=""true""></span> </div>
+                                <div class=""seperator seperator-small""></div>
+                                <p>АНАЛИЗОВ ПРОВЕДЕНО</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class=""p-t-60"">
+                <div class=""container"">
+                    <div class=""heading-text heading-section text-center"">
+                        <h2>Наши клиенты</h2>
+                        <span class=""lead"">Наши замечательные клиенты, с которыми нам было приятно работать! </span>
+                    </div>
+                    <div class=""carousel client-logos"" data-items=""6"" data-items-sm=""4"" data-items-xs=""3"" data-items-xxs=""2"" data-margin=""20"" data-arrows=""false"" data-autoplay=""true"" data-autoplay=""3000"" data-loop=""true"">
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/1.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/2.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/3.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/4.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/5.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/6.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/7.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/8.png""> </a>
+                        </div>
+                        <div>
+                            <a href=""#""><img alt="""" src=""images/clients/9.png""> </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class=""background-grey"">
+                <div class=""container"">
+                    <div class=""heading-text heading-section text-center"">
+                        <h2>ПОЗНАКОМЬТЕСЬ С НАШЕЙ КОМАНДОЙ</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consecte adipiscing elit. Suspendisse condimentum porttitor cursumus.
+                        </p>
+                    </div>
+                    <div class=""row team-members"">
+                        <div class=""col-lg-3"">
+                            <div class=""team-member"">
+                                <div class=""team-image"">
+                                    <img src=""images/team/1.jpg"">
+                                </div>
+                                <div class=""team-desc"">
+                                    <h3>Дмитрий Сергеевич</h3>
+                                    <span>Директор</span>
+                                    <p>Организация, координация и контроль работы предприятия </p>
+                                    <div class=""align-center"">
+                                        <a class=""btn btn-xs btn-slide btn-light"" href=""mailto:director@mail.ru"" data-width=""80"">
+                                            <i class=""icon-mail""></i>
+                                            <span>Mail</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=""col-lg-3"">
+                            <div class=""team-member"">
+                                <div class=""team-image"">
+                                    <img src=""images/team/2.jpg"">
+                                </div>
+                                <div class=""team-desc"">
+                                    <h3>Алёна Семёнова</h3>
+                                    <span>Менеджер-лаборант</span>
+                                    <p>Консультирование клиентов, контроль проведения лабораторных анализов</p>
+                                    <div class=""align-center"">
+                                        <a class=""btn btn-xs btn-slide btn-light"" target=""_blank"" href=""https://t.me/sesalena"" data-width=""100"">
+                                            <i class=""fab fa-telegram""></i>
+                                            <span>Telegram</span>
+                                        </a>
+                                        <a class=""btn btn-xs btn-slide btn-light"" href=""mailto:@Config.CompanyEmail?subject=Для%20Алёны"" data-width=""80"">
+                                            <i class=""icon-mail""></i>
+                                            <span>Email</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=""col-lg-3"">
+                            <div class=""team-member"">
+                                <div class=""team-image"">
+                                    <img src=""images/team/3.jpg"">
+                                </div>
+                                <div class=""team-desc"">
+                                    <h3>Екатерина Куравлева</h3>
+                                    <span>Менеджер</span>
+                                    <p>Приём входящих звонков, консультирование </p>
+                                    <div class=""align-center"">
+                                        <a class=""btn btn-xs btn-slide btn-light"" target=""_blank"" href=""https://t.me/sesekaterina"" data-width=""100"">
+                                            <i class=""fab fa-telegram""></i>
+                                            <span>Telegram</span>
+                                        </a>
+                                        <a class=""btn btn-xs btn-slide btn-light"" href=""mailto:@Config.CompanyEmail?subject=Для%20Екатерины"" data-width=""80"">
+                                            <i class=""icon-mail""></i>
+                                            <span>Email</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=""col-lg-3"">
+                            <div class=""team-member"">
+                                <div class=""team-image"">
+                                    <img src=""images/team/4.jpg"">
+                                </div>
+                                <div class=""team-desc"">
+                                    <h3>Ксения Житова</h3>
+                                    <span>Менеджер</span>
+                                    <p>Приём входящих звонков, консультирование </p>
+                                    <div class=""align-center"">
+                                        <a class=""btn btn-xs btn-slide btn-light"" target=""_blank"" href=""https://t.me/seskseniya"" data-width=""100"">
+                                            <i class=""fab fa-telegram""></i>
+                                            <span>Telegram</span>
+                                        </a>
+                                        <a class=""btn btn-xs btn-slide btn-light"" href=""mailto:@Config.CompanyEmail?subject=Для%20Ксении"" data-width=""80"">
+                                            <i class=""icon-mail""></i>
+                                            <span>Email</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>",
                             Url = "index"
                         });
                 });
@@ -440,8 +756,8 @@ namespace siteNetCore31.Migrations
                         {
                             Id = new Guid("666599d8-eac4-4f43-9f15-b7063c583b76"),
                             CategoryId = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
-                            DateUpdated = new DateTime(2020, 6, 25, 6, 38, 45, 605, DateTimeKind.Utc).AddTicks(823),
+                            DateCreated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
+                            DateUpdated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
                             H1 = "Услуга 1",
                             Url = "usluga-1"
                         });

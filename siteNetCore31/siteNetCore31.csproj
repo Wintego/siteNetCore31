@@ -30,7 +30,7 @@
 		<Content Update="wwwroot\js\**">
 			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
 		</Content>
-		<Content Update="wwwroot\js\ckeditor4">
+		<Content Update="wwwroot\js\ckeditor4\**">
 			<CopyToPublishDirectory>Always</CopyToPublishDirectory>
 		</Content>
 		<Content Update="wwwroot\js\jquery.inputmask.min.js">
