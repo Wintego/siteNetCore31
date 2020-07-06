@@ -31,7 +31,12 @@ namespace siteNetCore31
         {
             //изменяем кодировку
             services.AddWebEncoders(o => { o.TextEncoderSettings = new System.Text.Encodings.Web.TextEncoderSettings(UnicodeRanges.All); });
-
+            //добавляем редирект на https
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status301MovedPermanently;
+                options.HttpsPort = 443;
+            });
             //подключаем когфиг из appsettings.json
             Configuration.Bind("Project", new Config());
             Configuration.Bind("Email", new Email());
@@ -83,6 +88,12 @@ namespace siteNetCore31
             {                
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
+            //редирект на https
+            app.UseHttpsRedirection();
             //вывод ошибок
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 

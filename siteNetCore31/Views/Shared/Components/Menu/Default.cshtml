@@ -25,7 +25,7 @@
                                                 <li class="mega-menu-title">@category.MenuName</li>
                                                 @foreach (var service in Services.Where(x => x.Category == category))
                                                 {
-                                                    <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.MenuName</a></li>
+                                                    <li><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@service.Url" asp-route-category="@service.Category.Url">@service.MenuName @{if(service.isPopular) {<span class="badge badge-danger">Популярно</span> }}</a></li>
                                                 }
                                             </ul>
                                         </div>

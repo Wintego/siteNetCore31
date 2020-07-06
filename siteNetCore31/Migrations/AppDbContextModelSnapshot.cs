@@ -49,7 +49,7 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = "DCCC3E92-3165-4807-A95D-F8BB0E4270A3",
-                            ConcurrencyStamp = "a9050dfd-0fb6-44c4-ba53-4e2bc4815400",
+                            ConcurrencyStamp = "671ad8dd-59fa-4547-bb27-31d9f391f5e1",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,12 +148,12 @@ namespace siteNetCore31.Migrations
                         {
                             Id = "8704E50D-8A81-4CFD-BE85-8C1540FC1BF6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "52dfc64c-0b1b-45b4-8ec8-8040c0c0a14a",
-                            Email = "info@company.com",
+                            ConcurrencyStamp = "021cee6d-8b4e-401d-96b6-9de443b0a7db",
+                            Email = "info@mossanservice.ru",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "NETCORE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDlGHKnXatyWGkfpgHAssO4RvCKgul79zAu03Md7IaNdD528ieO/HaQzxYMaW2i8kQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELy69BQMu1NsEIyn3ZNFtVa2PYlubP0rkVRmI2WYvLTbaE+Dvwwd4hDNlScfFT1Zhg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -292,8 +292,8 @@ namespace siteNetCore31.Migrations
                         new
                         {
                             Id = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
-                            DateUpdated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
+                            DateCreated = new DateTime(2020, 7, 3, 11, 44, 29, 752, DateTimeKind.Utc).AddTicks(494),
+                            DateUpdated = new DateTime(2020, 7, 3, 11, 44, 29, 752, DateTimeKind.Utc).AddTicks(494),
                             H1 = "По умолчанию",
                             Url = "default"
                         });
@@ -739,6 +739,9 @@ namespace siteNetCore31.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isPopular")
+                        .HasColumnType("bit");
+
                     b.Property<string>("seoDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -756,10 +759,11 @@ namespace siteNetCore31.Migrations
                         {
                             Id = new Guid("666599d8-eac4-4f43-9f15-b7063c583b76"),
                             CategoryId = new Guid("309035c6-9489-41ca-a395-717243880814"),
-                            DateCreated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
-                            DateUpdated = new DateTime(2020, 6, 29, 8, 24, 43, 341, DateTimeKind.Utc).AddTicks(8114),
+                            DateCreated = new DateTime(2020, 7, 3, 11, 44, 29, 752, DateTimeKind.Utc).AddTicks(494),
+                            DateUpdated = new DateTime(2020, 7, 3, 11, 44, 29, 752, DateTimeKind.Utc).AddTicks(494),
                             H1 = "Услуга 1",
-                            Url = "usluga-1"
+                            Url = "usluga-1",
+                            isPopular = false
                         });
                 });
 

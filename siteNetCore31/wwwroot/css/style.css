@@ -1513,7 +1513,7 @@ Main Menu
         list-style: none;
         padding: 0; }
       #mainMenu nav > ul .badge {
-        font-size: 8px;
+        font-size: 10px;
         padding: 2px 4px;
         line-height: 9px;
         margin: -2px 4px; }

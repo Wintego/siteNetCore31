@@ -1,6 +1,8 @@
 ﻿@model Category
 @{
     Layout = "_LayoutNoSidebar";
+    ViewBag.Title = Model.seoTitle;
+    ViewBag.Description = Model.seoDescription;
     var services = ViewBag.Services as IQueryable<Service>;
     var image = Model.Image == null ? "noimage.png" : Model.Image;
 }

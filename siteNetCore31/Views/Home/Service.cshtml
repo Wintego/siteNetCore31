@@ -20,12 +20,14 @@
                 <div class="post-meta">
                     <span class="post-meta-category"></span>
                     <div class="breadcrumb float-left">
-                        <ul>
-                            <li>
-                                <a href="/">Главная</a>
+                        <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+                            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                <a itemprop="item" href="/"><span itemprop="name">Главная</span></a>
+                                <meta itemprop="position" content="0">
                             </li>
-                            <li>
-                                <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@Model.Category.Url">@(String.IsNullOrEmpty(Model.Category.MenuName) ? Model.Category.H1 : Model.Category.MenuName)</a>
+                            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@Model.Category.Url" itemprop="item"><span itemprop="name">@(String.IsNullOrEmpty(Model.Category.MenuName) ? Model.Category.H1 : Model.Category.MenuName)</span></a>
+                                <meta itemprop="position" content="1">
                             </li>
                         </ul>
                     </div>

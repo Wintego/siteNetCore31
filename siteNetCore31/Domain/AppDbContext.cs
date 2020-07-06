@@ -433,7 +433,8 @@ namespace siteNetCore31.Domain
                 H1 = "Услуга 1",
                 CategoryId = new Guid("309035C6-9489-41CA-A395-717243880814"),
                 DateCreated = date,
-                DateUpdated = date
+                DateUpdated = date,
+                isPopular = false
             });
         }
     }
