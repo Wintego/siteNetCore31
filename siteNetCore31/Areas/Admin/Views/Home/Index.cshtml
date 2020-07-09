@@ -1,110 +1,128 @@
 ﻿@model siteNetCore31.Domain.Repsitories.DataManager
 @{
-    Layout = "_LayoutNoSidebar";
+    Layout = "_LayoutWhite";
     var Pages = Model.Pages.GetPages();
-    var Services = Model.Services.GetServices().OrderByDescending(x=>x.DateUpdated);
+    var Services = Model.Services.GetServices().OrderByDescending(x => x.DateUpdated);
     var Categories = Model.Categories.GetCategories();
 }
-<h1>Панель Администратора</h1>
 
-<table>
-    <tr>
-        <td><h3>Страницы (@Pages.Count()) <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
-        <td></td>
-        <td></td>
-    </tr>
-    @if (Pages.Any())
-    {
-        @foreach (var item in Pages)
+@*<section id="page-title" data-bg-parallax="/images/admin.jpg">
+    <div class="container">
+        <div class="page-title">
+            <h1>Панель администратора</h1>
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-light btn-shadow">Выйти</button>
+            </form>
+        </div>
+    </div>
+</section>*@
+
+<section>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Страницы (@Pages.Count()) <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h5>
+            </div>
+            @if (Pages.Any())
         {
-            <tr>
-                <td>
-                    <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
-                </td>
-                <td style="width: 1%">
-                    <a asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
-                </td>
-                <td style="width: 1%; padding-left: 20px;">
-                    @if (item.Url != "index")
-                    {
+            <div class="card-body">
+                @foreach (var item in Pages)
+            {
+                <div class="row">
+                    <div class="col-md-6"><a asp-area="" asp-controller="Home" asp-action="Info" asp-route-Id="@item.Url"><b class="text-uppercase">@item.H1</b></a></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <a class="btn" asp-area="Admin" asp-controller="Pages" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-cog"></i> Редактировать</a>
+                    </div>
+                    <div class="col-md-1">
+                        @if (item.Url != "index")
+                        {
                         <form id="form-@item.Id" asp-area="Admin" asp-controller="Pages" asp-action="Delete" method="post">
                             <input type="hidden" name="id" value="@item.Id" />
-                            <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
+                            <a data-toggle="tooltip" data-placement="right" title="" data-original-title="Данное действие отменить нельзя!" class="btn btn-outline" href="#" onclick="document.getElementById('form-@item.Id').submit();">
+                                <i class="fa fa-trash"></i><an>
+                                </an>
+                            </a>
                         </form>
-                    }
-                </td>
-            </tr>
+                        }
+                    </div>
+                </div>
+            }
+            </div>
         }
-    }
-</table>
-<hr />
-<table>
-    <tr>
-        <td><h3>Категории (@Categories.Count()) <a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
-        <td></td>
-        <td></td>
-    </tr>
-    @if (Categories.Any())
-    {
-
-        @foreach (var item in Categories)
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Категории (@Categories.Count()) <a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h5>
+            </div>
+            @if (Categories.Any())
         {
-            <tr>
-                <td>
-                    <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@item.Url"><h4 style="margin: 0">@item.H1</h4></a>
-                </td>
-                <td style="width: 1%;">
-                    <a asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
-                </td>
-                <td style="width: 1%; padding-left: 20px;">
-                    @if (item.Url != "default")
-                    {
+            <div class="card-body">
+                @foreach (var item in Categories)
+            {
+                <div class="row">
+                    <div class="col-md-6"><a asp-area="" asp-controller="Home" asp-action="Category" asp-route-Id="@item.Url"><b class="text-uppercase">@item.H1</b></a></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <a class="btn" asp-area="Admin" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-cog"></i> Редактировать</a>
+                    </div>
+                    <div class="col-md-1">
+                        @if (@item.Id != new Guid("309035C6-9489-41CA-A395-717243880814"))
+                        {
                         <form id="form-@item.Id" asp-area="Admin" asp-controller="Categories" asp-action="Delete" method="post">
                             <input type="hidden" name="id" value="@item.Id" />
-                            <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
+                            <a data-toggle="tooltip" data-placement="right" title="" data-original-title="Данное действие отменить нельзя!" class="btn btn-outline" href="#" onclick="document.getElementById('form-@item.Id').submit();">
+                                <i class="fa fa-trash"></i><an>
+                                </an>
+                            </a>
                         </form>
-                    }
-                </td>
-            </tr>
+                        }
+                    </div>
+                </div>
+            }
+            </div>
         }
-    }
-</table>
-<hr />
-<table>
-    <tr>
-        <td><h3>Услуги (@Categories.Count()) <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h3></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    @if (Services.Any())
-    {
-        @foreach (var item in Services)
-        {
-            <tr>
-                <td style="width: 180px;">
-                    @{ 
-                        var image = item.Image == null ? "noimage.png" : item.Image;
-                    }
-                    <img style="height: 35px; width: 78px;" src="/images/mini-@image" />
-                </td>
-                <td>
-                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@(String.IsNullOrEmpty(item.Category.Url) ? "" : item.Category.Url)"><h4 style="margin: 0">@item.H1</h4></a><h4 style="margin: 0; font-weight: lighter;">@(String.IsNullOrEmpty(item.Category.H1) ? "Без категории" : item.Category.H1)</h4>
-                </td>
-                <td style="width: 1%;">
-                    <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
-                </td>
-                <td style="width: 1%; padding-left: 20px;">
-                    <form id="form-@item.Id" asp-area="Admin" asp-controller="Services" asp-action="Delete" method="post">
-                        <input type="hidden" name="id" value="@item.Id" />
-                        <a href="#" onclick="document.getElementById('form-@item.Id').submit();">Удалить</a>
-                    </form>
-                </td>
-            </tr>
-        }
-    }
-</table>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Услуги (@Services.Count()) <a asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-Id=""><i style="font-size: 16px; color: lightgray; margin: 0 0 7px 10px;" class="fas fa-plus"></i></a></h5>
+            </div>
 
-<form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
-    <input type="submit" class="button fa-check" value="Выйти" />
-</form>
+            @if (Services.Any())
+            {
+            <div class="card-body">
+                @foreach (var item in Services)
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@(String.IsNullOrEmpty(item.Category.Url) ? "" : item.Category.Url)"><b class="text-uppercase">@item.H1</b></a>
+                        @{if(@item.isPopular) {<span class="badge badge-danger">Популярно</span> }}
+                        <mark>@(String.IsNullOrEmpty(item.Category.H1) ? "Без категории" : item.Category.H1)</mark>
+                    </div>
+                    <div class="col-md-2">
+                        @{
+                            var image = item.Image == null ? "noimage.png" : item.Image;
+                        }
+                        <img src="/images/services/mini-@image" />
+                    </div>
+                    <div class="col-md-3">
+                        <a class="btn" asp-area="Admin" asp-controller="Services" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-cog"></i> Редактировать</a>
+                    </div>
+                    <div class="col-md-1">
+                        <form id="form-@item.Id" asp-area="Admin" asp-controller="Services" asp-action="Delete" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <a data-toggle="tooltip" data-placement="right" title="" data-original-title="Данное действие отменить нельзя!" class="btn btn-outline" href="#" onclick="document.getElementById('form-@item.Id').submit();">
+                                <i class="fa fa-trash"></i><an>
+                                </an>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            }
+            </div>
+                }
+        </div>
+    </div>
+</section>
+
+<script src="~/js/popper.min.js" asp-append-version="true"></script>

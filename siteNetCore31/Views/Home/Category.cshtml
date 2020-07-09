@@ -1,31 +1,53 @@
 ﻿@model Category
 @{
     Layout = "_LayoutNoSidebar";
+    ViewBag.Title = Model.seoTitle;
+    ViewBag.Description = Model.seoDescription;
     var services = ViewBag.Services as IQueryable<Service>;
+    var image = Model.Image == null ? "noimage.png" : Model.Image;
 }
-    <section class="box article-list">
-        <h2 class="icon fa-file-alt">@Model.H1</h2>
 
-        <p>@Html.Raw(Model.Text)</p>
-        @if (services.Any())
-        {
-            @foreach (var item in services)
-            {
-                <article class="box excerpt">
-                    @{
-                        var image = Model.Image == null ? "noimage.png" : Model.Image;
+    <section id="page-title" data-bg-parallax="/images/categories/@Model.Image">
+        <div class="parallax-container img-loaded" data-velocity="-.140" style="background: url(&quot;/images/categories/@Model.Image&quot;);"></div>
+        <div class="container">
+            <div class="page-title">
+                <h1>@Model.H1</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-content">
+        <div class="container">
+            <div class="page-title">
+                <p>@Html.Raw(Model.Text)</p>
+            </div>
+            <div id="blog" class="post-thumbnails">
+                @if (services.Any())
+                {
+                    @foreach (var item in services)
+                    {
+                        <div class="post-item">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+                                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">
+                                        <img alt="@Model.seoTitle" src="images/services/square-@item.Image">
+                                    </a>
+                                    <span class="post-meta-category"><a href="">@item.Category.H1</a></span>
+                                </div>
+                                <div class="post-item-description">
+                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>@item.DateCreated.ToString("dd MMM")</span>
+                                    <h2>
+                                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">
+                                            @item.H1
+                                        </a>
+                                    </h2>
+                                    <p>@item.ShortDescription</p>
+                                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="item-link">Читать <i class="icon-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     }
-                    <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url" class="image left"><img src="/images/square-@image" alt="@item.H1" /></a>
-                    <div>
-                        <header>
-                            <span class="date">@item.DateCreated.ToString("dd MMM")</span>
-                            <h3><a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@item.H1</a></h3>
-                        </header>
-                        <p>
-                            @item.ShortDescription
-                        </p>
-                    </div>
-                </article>
-            }
-        }
+                }
+            </div>
+        </div>
     </section>

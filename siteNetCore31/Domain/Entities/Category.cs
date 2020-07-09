@@ -9,6 +9,6 @@ namespace siteNetCore31.Domain.Entities
 {
     public class Category : EntityBase
     {
-
+        
     }
 }

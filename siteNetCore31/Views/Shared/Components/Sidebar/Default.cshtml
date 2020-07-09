@@ -1,31 +1,19 @@
 ﻿@model IQueryable<Service>
-<div class="col-4 col-12-medium">
-    <div id="sidebar">
-        <section>
-            <header class="major">
-                <span>Контакты</span>
-            </header>
-            <header>
-                <span class="date"><b>Телефон:</b> <a href="tel:@Config.CompanyPhoneShort">@Config.CompanyPhone</a></span>
-                <span class="date"><b>Email:</b> <a href="mailto:@Config.CompanyEmail">@Config.CompanyEmail</a></span>
-            </header>
-            <footer>
-                <a asp-area="" asp-controller="Home" asp-action="Info" asp-route-id="callback" class="button icon solid fa-arrow-circle-right">Заказать эту услугу</a>
-            </footer>
-        </section>
-        <section>
-            <header class="major">
-                <span>Услуги</span>
-            </header>
-            <ul>
-                @foreach (var item in Model)
-                {
-                    <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@(String.IsNullOrEmpty(item.MenuName) ? item.H1 : item.MenuName)</a>                        
-                    </li>
-                }
-            </ul>
-        </section>
+<div class="sidebar sticky-sidebar col-lg-3">
+    <div class="widget">
+        <h4 class="widget-title">Новые услуги</h4>
+        <div class="post-thumbnail-list">
+            @foreach (var item in Model)
+            {
+                <div class="post-thumbnail-entry">
+                    <img alt="" src="~/images/services/square-@item.Image">
+                    <div class="post-thumbnail-content">
+                        <a asp-area="" asp-controller="Home" asp-action="Service" asp-route-id="@item.Url" asp-route-category="@item.Category.Url">@(String.IsNullOrEmpty(@item.MenuName) ? @item.H1 : @item.MenuName)</a>
+                        <span class="post-date"><i class="icon-clock"></i>@item.DateUpdated.ToString("dd.MM")</span>
+                        <span class="post-category"><i class="fa fa-tag"></i>@(String.IsNullOrEmpty(@item.Category.MenuName) ? @item.Category.H1 : @item.Category.MenuName)</span>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
-

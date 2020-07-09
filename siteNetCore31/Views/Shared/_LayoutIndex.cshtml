@@ -1,27 +1,30 @@
-﻿<!DOCTYPE HTML>
-<html>
+﻿<!DOCTYPE html>
+<html lang="ru">
+
 <head>
     @await Html.PartialAsync("MetaPartial")
     @await Html.PartialAsync("CssPartial")
 </head>
-<body class="homepage is-preload">
-    <div id="page-wrapper">
-        <div id="header-wrapper">
-            <div class="container">
-                <header id="header">
-                    <div class="inner">
-                        @await Html.PartialAsync("LogoPartial")
-                        @await Html.PartialAsync("NavPartial")
-                    </div>
-                </header>
-                @await Html.PartialAsync("BannerPartial")
+
+<body>
+    <div class="body-inner">
+        <div id="topbar" class="topbar-transparent topbar-fullwidth dark d-none d-xl-block d-lg-block">
+            @await Html.PartialAsync("TopbarPartial")
+        </div>
+        <header id="header" data-transparent="true" data-fullwidth="true" class="dark submenu-light">
+            <div class="header-inner">
+                <div class="container">
+                    @await Html.PartialAsync("LogoPartial")
+                    @await Html.PartialAsync("NavigationResposniveTriggerPartial")
+                    @await Html.PartialAsync("MenuPartial")
+                </div>
             </div>
-        </div>
-        <div id="main-wrapper">
+        </header>        
             @RenderBody()
-        </div>
-        @await Html.PartialAsync("FooterPartial")
-    </div>
+            @await Html.PartialAsync("FooterPartial")
+</div>
+    <!-- end: Body Inner -->
+    <a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
     @await Html.PartialAsync("ScriptsPartial")
 </body>
 </html>

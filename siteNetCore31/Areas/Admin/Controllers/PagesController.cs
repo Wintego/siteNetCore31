@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using LazZiya.ImageResize;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using siteNetCore31.Domain.Entities;
 using siteNetCore31.Domain.Repsitories;
@@ -13,10 +17,12 @@ namespace siteNetCore31.Areas.Admin.Controllers
     public class PagesController : Controller
     {
         private readonly DataManager dataManager;
+        private readonly IWebHostEnvironment hostEnvironment;
 
-        public PagesController(DataManager dataManager)
+        public PagesController(DataManager dataManager, IWebHostEnvironment hostEnvironment)
         {
             this.dataManager = dataManager;
+            this.hostEnvironment = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -30,7 +36,7 @@ namespace siteNetCore31.Areas.Admin.Controllers
             return View(entity);
         }
         [HttpPost]
-        public IActionResult Edit(Page page)
+        public IActionResult Edit(Page page, Microsoft.AspNetCore.Http.IFormFile Image)
         {
             if(ModelState.IsValid)
             {
@@ -42,6 +48,20 @@ namespace siteNetCore31.Areas.Admin.Controllers
                     {
                         ModelState.AddModelError(nameof(Page.Url), "Запись с таким URL уже есть");
                         return View(page);
+                    }
+                }
+                if (Image.IsImage())
+                {
+                    //записываем в объект путь к картинке
+                    page.Image = Image.FileName;
+
+                    //сохраняем картинку
+                    using (var img = System.Drawing.Image.FromStream(Image.OpenReadStream(), true, true))
+                    {
+                        //создаём измененную картинку
+                        var i = new Bitmap(img.ScaleAndCrop(1920, 1280, TargetSpot.BottomMiddle));
+                        //сохраняем картинку
+                        i.SaveAs(Path.Combine(hostEnvironment.WebRootPath, "images/pages/", Image.FileName));
                     }
                 }
                 //сохраняем запись

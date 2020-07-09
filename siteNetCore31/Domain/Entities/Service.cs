@@ -10,6 +10,11 @@ namespace siteNetCore31.Domain.Entities
 {
     public class Service : EntityBase
     {
+        [Display(Name = "Категория")]
         public virtual Category Category { get; set; }
+
+
+        [Display(Name = "Популярно")]
+        public bool isPopular { get; set; }
     }
 }

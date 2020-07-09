@@ -1,23 +1,45 @@
 ﻿@model LoginViewModel
-<h1>Вход в админку</h1>
-<form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
-    <div>
-        <label asp-for="login"></label>
-        <input asp-for="login" />
-        <span asp-validation-for="login"></span>
+@{
+    Layout = "_LayoutNoSidebar";
+}
+<section id="page-title" data-bg-parallax="/images/parallax/5.jpg">
+    <div class="container">
+        <div class="page-title">
+            <h1>Вход в панель администратора</h1>
+        </div>
     </div>
-    <div>
-        <label asp-for="password"></label>
-        <input asp-for="password" />
-        <span asp-validation-for="password"></span>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 offset-4">
+                <div class="panel ">
+                    <div class="panel-body">
+                        <form asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+                            <div class="form-group">
+                                <input asp-for="login" placeholder="Логин" class="form-control"/>
+                                <span asp-validation-for="login"></span>
+                            </div>
+                            <div class="form-group m-b-5">
+                                <input asp-for="password" placeholder="Пароль" class="form-control" />
+                                <span asp-validation-for="password"></span>
+                            </div>
+                            <div class="form-group form-inline m-b-10 ">
+                                <div class="form-check">
+                                    <label asp-for="remember">
+                                        <input asp-for="remember"><small class="m-l-10"> Запомнить меня</small>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn" type="submit">Войти</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <p class="small">Нет аккаунта? <a href="#">Сочувствуем :(</a></p>
+            </div>
+        </div>
     </div>
-    <div>
-        <label asp-for="remember"></label>
-        <input asp-for="remember" />
-        <span asp-validation-for="remember"></span>
-    </div>
-    <div>
-        <div asp-validation-summary="All"></div>
-        <input type="submit" value="Войти" />
-    </div>
-</form>
+</section>

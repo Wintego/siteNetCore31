@@ -34,7 +34,7 @@ namespace siteNetCore31.Domain.Entities
         [Display(Name = "Главная картинка")]
         public virtual string Image { get; set; }
 
-        [Display(Name = "Название для меню")]
+        [Display(Name = "Краткое название для меню")]
         public virtual string MenuName { get; set; }
 
         [DataType(DataType.Date)]

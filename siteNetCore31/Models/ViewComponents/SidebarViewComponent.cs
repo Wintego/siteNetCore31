@@ -18,7 +18,7 @@ namespace siteNetCore31.Models.ViewComponents
 
         public Task<IViewComponentResult> InvokeAsync()
         {
-            return Task.FromResult((IViewComponentResult)View("Default", dataManager.Services.GetServices()));
+            return Task.FromResult((IViewComponentResult)View("Default", dataManager.Services.GetServices().OrderByDescending(x=>x.DateCreated).Take(5)));
         }
     }
 }

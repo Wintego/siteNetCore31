@@ -1,20 +1,45 @@
 ﻿@model Service
 @{
-    Layout = "_LayoutLeftSidebar";
+    Layout = "_LayoutSidebar";
     ViewBag.Title = Model.seoTitle;
     ViewBag.Description = Model.seoDescription;
     ViewBag.Image = Model.Image == null ? $"{Context.Request.Scheme}://{Context.Request.Host}/images/square-noimage.png" : $"{Context.Request.Scheme}://{Context.Request.Host}/images/square-{Model.Image}";
+    var image = Model.Image == null ? "noimage.png" : Model.Image;
+
 }
 
-<header class="major">
-    <h1>@Model.H1</h1>
-    <p>@Model.ShortDescription</p>
-</header>
-@{
-    var image = Model.Image == null ? "noimage.png" : Model.Image;
-}
-<span class="image featured"><img src="~/images/@image" alt="@Model.H1" /></span>
-<p>@Html.Raw(Model.Text)</p>
+    <div class="post-item">
+        <div class="post-item-wrap">
+            <div class="post-image">
+                <a href="#">
+                    <img src="/images/services/@image" alt="@Model.H1">
+                </a>
+            </div>
+            <div class="post-item-description">
+                <h1>@Model.H1</h1>
+                <div class="post-meta">
+                    <span class="post-meta-category"></span>
+                    <div class="breadcrumb float-left">
+                        <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+                            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                <a itemprop="item" href="/"><span itemprop="name">Главная</span></a>
+                                <meta itemprop="position" content="0">
+                            </li>
+                            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                <a asp-area="" asp-controller="Home" asp-action="Category" asp-route-id="@Model.Category.Url" itemprop="item"><span itemprop="name">@(String.IsNullOrEmpty(Model.Category.MenuName) ? Model.Category.H1 : Model.Category.MenuName)</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="alert" class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span> </button>
+                    <strong><i class="fa fa-check-circle"></i> Внимание!</strong> Вы можете заказать данную услугу позвонив по номеру телефона @Config.CompanyPhone
+                </div>
+                <p>@Html.Raw(Model.Text)</p>
+            </div>
+        </div>
+    </div> 
 
 <script type="application/ld+json">
 {

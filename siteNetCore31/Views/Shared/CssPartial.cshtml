@@ -1,1 +1,6 @@
-﻿<link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />
+﻿<environment include="Development">
+    <link href="~/content/bundle.css" rel="stylesheet" asp-append-version="true" />
+</environment>
+<environment exclude="Development">
+    <link href="~/content/bundle.min.css" rel="stylesheet" asp-append-version="true" />
+</environment>

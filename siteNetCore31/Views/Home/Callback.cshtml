@@ -1,53 +1,71 @@
 ﻿@model CallbackViewModel
-<div class="callback">
-    <header class="major">
-        <h1>Заказать обратный звонок</h1>
-        <p>Наши специалисты быстро проведут расчет стоимости услуги или подготовят коммерческое предложение для юридических лиц!</p>
-    </header>
-    <form asp-area="" asp-controller="Home" asp-action="Callback" method="post" asp-route-returnUrl="@ViewBag.returnUrl" asp-route-success="@ViewBag.Success">
-        <div>
-            <label asp-for="Phone"></label>            
-            @{
-                if (ViewBag.Message == null)
-                {
-                    <input type="tel" asp-for="Phone" />
-                }
-                else
-                {
-                    <input type="tel" asp-for="Phone" disabled/>
-                }
-            }
-            <span asp-validation-for="Phone"></span>
+@{ 
+    Layout = "_LayoutNoSidebar";
+}
+    <section id="page-title" data-bg-parallax="/images/background.jpg">
+        <div class="parallax-container img-loaded" data-velocity="-.140" style="background: url(&quot;/images/background.jpg&quot;);"></div>
+        <div class="container">
+            <div class="page-title">
+                <h1>Заказать обратный звонок</h1>
+            </div>
         </div>
-        <div>
-            <label asp-for="Name"></label>
-            @{
-                if (ViewBag.Message == null)
-                {
-                    <input asp-for="Name" />
-                }
-                else
-                {
-                    <input asp-for="Name" disabled/>
-                }
-            }
-            <span asp-validation-for="Name"></span>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 offset-4">
+                    <div class="panel ">
+                        <div class="panel-body">
+                            <form asp-area="" asp-controller="Home" asp-action="Callback" method="post" asp-route-returnUrl="@ViewBag.returnUrl" asp-route-success="@ViewBag.Success">
+                                <div class="form-group">
+                                    <label asp-for="Phone"></label>
+                                    @{
+                                        if (ViewBag.Message == null)
+                                        {
+                                            <input id="Phone" class="form-control" type="tel" asp-for="Phone" />
+                                        }
+                                        else
+                                        {
+                                            <input id="Phone" class="form-control" type="tel" asp-for="Phone" disabled />
+                                        }
+                                    }
+                                    <span asp-validation-for="Phone"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Name"></label>
+                                    @{
+                                        if (ViewBag.Message == null)
+                                        {
+                                            <input class="form-control" asp-for="Name" />
+                                        }
+                                        else
+                                        {
+                                            <input class="form-control" asp-for="Name" disabled />
+                                        }
+                                    }
+                                    <span asp-validation-for="Name"></span>
+                                </div>
+                                <div>
+                                    @{
+                                        if (ViewBag.Message == null)
+                                        {
+                                            <input class="btn form-control" type="submit" value="Отправить" />
+                                        }
+                                        else
+                                        {
+                                            <h6 style="color: green">@ViewBag.Message</h6>
+                                            <p>Вы будете перенаправлены на предыдущую страницу через 5 секунд</p>
+                                        }
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            @{
-                if (ViewBag.Message == null)
-                {
-                    <input type="submit" value="Отправить" />
-                }
-                else
-                {
-                    <h6 style="color: green">@ViewBag.Message</h6>
-                    <p>Вы будете перенаправлены на предыдущую страницу через 5 секунд</p>
-                }
-            }            
-        </div>
-    </form>    
-</div>
+    </section>
 <script src="~/js/jquery.inputmask.min.js" defer asp-append-version="true"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
